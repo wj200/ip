@@ -43,7 +43,7 @@ public class Mars {
 
     /*Level 2. Add, List */
     private void store(){
-        List<String> arrayList = new ArrayList<String>();
+        List<String> arrayList = new ArrayList<>();
         System.out.println(" Hello! I'm Mars\n What can I do for you?\n");
         Scanner reader = new Scanner(System.in);
         String n = reader.nextLine();
