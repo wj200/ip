@@ -22,6 +22,7 @@ public class Mars {
         mars.echo();
     }
 
+    /*Level 1. Echo*/
     private void echo(){
         System.out.println(" Hello! I'm Mars\n What can I do for you?");
         Scanner reader = new Scanner(System.in);
