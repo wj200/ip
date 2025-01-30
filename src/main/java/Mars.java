@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.List;
 import java.util.ArrayList;
 
 public class Mars {
@@ -20,7 +21,7 @@ public class Mars {
                 " Bye. Hope to see you again soon!\n" +
                 "____________________________________________________________"); */
         Mars mars = new Mars();
-        mars.echo();
+        // mars.echo();
         mars.store();
     }
 
@@ -43,18 +44,20 @@ public class Mars {
     /*Level 2. Add, List */
     private void store(){
         List<String> arrayList = new ArrayList<String>();
-        System.out.println(" Hello! I'm Mars\n What can I do for you?");
+        System.out.println(" Hello! I'm Mars\n What can I do for you?\n");
         Scanner reader = new Scanner(System.in);
         String n = reader.nextLine();
         while(!n.equals("bye")){
-            arrayList.add(n);
             if(n.equals("list")){
                 Mars.list(arrayList);
             }
-            String output = "____________________________________________________________\n" +
-                    "added: " + n +
-                    "\n____________________________________________________________\n";
-            System.out.println(output);
+            else {
+                arrayList.add(n);
+                String output = "____________________________________________________________\n" +
+                        "added: " + n +
+                        "\n____________________________________________________________\n";
+                System.out.println(output);
+            }
             n = reader.nextLine();
         }
         System.out.println("Bye. Hope to see you again soon!");
@@ -62,11 +65,11 @@ public class Mars {
     }
 
     private static void list(List<String> lst){
-        String[] strArray = lst.toArray();
+        Object[] strArray = lst.toArray();
         System.out.println("____________________________________________________________\n");
-        int i = 0;
-        while(i < strArray.length){
-            System.out.println(i + "." + strArray[i]);
+        int i = 1;
+        while(i <= strArray.length){
+            System.out.println(i + "." + strArray[i-1]);
             i += 1;
         }
         System.out.println("____________________________________________________________\n");
