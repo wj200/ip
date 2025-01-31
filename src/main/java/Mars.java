@@ -22,22 +22,23 @@ public class Mars {
                 "____________________________________________________________\n" +
                 " Bye. Hope to see you again soon!\n" +
                 "____________________________________________________________"); */
-        Mars mars = new Mars();
-        // mars.echo();
-        //mars.store(arrayList);
-        // mars.list(arrayList);
-        // mars.mark(arrayList);
-        // mars.unmark(arrayList);
-        mars.addTask(arrayList);
-        mars.addTask(arrayList);
-        mars.addTask(arrayList);
-        mars.addTask(arrayList);
-        mars.mark(arrayList);
-        mars.mark(arrayList);
-        mars.addTask(arrayList);
-        Mars.list(arrayList);
-        mars.addTask(arrayList);
-        mars.addTask(arrayList);
+        try{
+            Mars mars = new Mars();
+            // mars.echo();
+            //mars.store(arrayList);
+            // mars.list(arrayList);
+            // mars.mark(arrayList);
+            // mars.unmark(arrayList);
+            mars.addTask(arrayList);
+        } catch (marsException e) {
+            System.out.println(e.getMessage());
+        }
+        finally {
+            ;
+        }
+
+
+
     }
 
     /*Level 1. Echo*/
@@ -127,28 +128,47 @@ public class Mars {
     }
 
     private void addTask(List<Task> lst){
-        System.out.println("____________________________________________________________\n");
         Scanner reader = new Scanner(System.in);
         String taskType = reader.next();
         String description = reader.nextLine();
+        System.out.println("____________________________________________________________\n");
         switch(taskType){
             case "todo":
-                System.out.println("Got it. I've added this task: \n");
-                lst.add(new Todo(description));
+                if (description.isEmpty()){
+                    throw new marsException("OOPS!!! The description of a " + taskType + " cannot be empty\n " +
+                            "____________________________________________________________\n");
+                }
+                else {
+                    System.out.println("Got it. I've added this task: \n");
+                    lst.add(new Todo(description));
+                }
                 break;
             case "deadline" :
-                String[] parts = description.split("/by", 2);
-                String deadlineDesc = parts[0] + "(by: " + parts[1] + ")";
-                System.out.println("Got it. I've added this task: \n");
-                lst.add(new Deadline(deadlineDesc));
+                if (description.isEmpty()){
+                    throw new marsException("OOPS!!! The description of a " + taskType + " cannot be empty\n " +
+                            "____________________________________________________________\n");
+                }
+                else {
+                    String[] parts = description.split("/by", 2);
+                    String deadlineDesc = parts[0] + "(by: " + parts[1] + ")";
+                    System.out.println("Got it. I've added this task: \n");
+                    lst.add(new Deadline(deadlineDesc));
+                }
                 break;
             case "event" :
-                String[] event = description.split("/from | /to ", 3);
-                String eventDesc = event[0] + "from: " + event[1] + " to: " + event[2];
-                System.out.println("Got it. I've added this task: \n");
-                lst.add(new Event(eventDesc));
+                if (description.isEmpty()){
+                    throw new marsException("OOPS!!! The description of a " + taskType + " cannot be empty\n " +
+                            "____________________________________________________________\n");
+                }
+                else {
+                    String[] event = description.split("/from | /to ", 3);
+                    String eventDesc = event[0] + "from: " + event[1] + " to: " + event[2];
+                    System.out.println("Got it. I've added this task: \n");
+                    lst.add(new Event(eventDesc));
+                }
                 break;
-                default: ;
+                default: throw new marsException("OOPS!!! I'm sorry, but I don't know what that means :-(\n" +
+                        "____________________________________________________________\n");
         }
         System.out.println(lst.getLast());
 
