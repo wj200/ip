@@ -30,6 +30,7 @@ public class Mars {
             // mars.mark(arrayList);
             // mars.unmark(arrayList);
             mars.addTask(arrayList);
+            mars.deleteTask(arrayList);
         } catch (marsException e) {
             System.out.println(e.getMessage());
         }
@@ -182,4 +183,23 @@ public class Mars {
 
     }
 
+    private void deleteTask(List<Task> lst){
+        Scanner reader = new Scanner(System.in);
+        String delete = reader.next();
+        int num = reader.nextInt();
+        System.out.println("____________________________________________________________\n");
+            try {
+                Task task = lst.get(num - 1);
+                System.out.println("Noted. I've removed this task: " + task.toString());
+                lst.remove(task);
+                System.out.println("Now you have " + lst.size() + " tasks in the list.\n");
+            }
+            catch(IndexOutOfBoundsException e){
+                System.out.println("Please input a valid index\n");
+            }
+        finally {
+                reader.close();
+            }
+
+    }
 }
