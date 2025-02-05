@@ -2,46 +2,25 @@ import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 
-
 public class Mars {
     public static void main(String[] args) {
         List<Task> arrayList = new ArrayList<>();
-        /* PRE- COMMITS
-        String logo = " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n";
-        System.out.println("Hello from\n" + logo);
-         */
-
-        /* LEVEL 0. Rename, Greet, Exit
-        System.out.println("____________________________________________________________\n" +
-                " Hello! I'm Mars\n" +
-                " What can I do for you?\n" +
-                "____________________________________________________________\n" +
-                " Bye. Hope to see you again soon!\n" +
-                "____________________________________________________________"); */
         try{
             Mars mars = new Mars();
-            // mars.echo();
-            //mars.store(arrayList);
-            // mars.list(arrayList);
-            // mars.mark(arrayList);
-            // mars.unmark(arrayList);
             mars.addTask(arrayList);
-            mars.deleteTask(arrayList);
+            mars.addTask(arrayList);
+            mars.addTask(arrayList);
+            mars.mark(arrayList);
+            mars.unmark(arrayList);
+            Mars.list(arrayList);
+            // mars.deleteTask(arrayList);
         } catch (marsException e) {
             System.out.println(e.getMessage());
         }
         finally {
             ;
         }
-
-
-
     }
-
     /*Level 1. Echo*/
     private void echo(){
         System.out.println(" Hello! I'm Mars\n What can I do for you?\n");
@@ -82,16 +61,11 @@ public class Mars {
     }
 
     private static void list(List<Task> lst){
-        Object[] taskArray = lst.toArray();
         System.out.println("____________________________________________________________\n");
         System.out.println("Here are the tasks in your list:\n");
         int i = 1;
-        while(i <= taskArray.length){
-            Task task = (Task) taskArray[i-1];
-            String statusIcon = task.getStatusIcon();
-
-            System.out.println(i + "." + taskArray[i - 1]);
-
+        while(i <= lst.size()){
+            System.out.println(i + "." + lst.get(i-1));
             i += 1;
         }
         System.out.println("____________________________________________________________\n");
@@ -99,32 +73,28 @@ public class Mars {
 
     /*LEVEL 3*/
     private void mark(List<Task> lst){
-        Object[] taskArray = lst.toArray();
-
         Scanner reader = new Scanner(System.in);
         String n = reader.next();
         int num = reader.nextInt();
-        Task task = (Task) taskArray[num-1];
+        Task task = lst.get(num-1);
         task.markAsDone();
 
         System.out.println("____________________________________________________________\n" +
                 "Nice! I've marked this task as done: ");
-        System.out.println(task.toString());
+        System.out.println(task);
         System.out.println("____________________________________________________________\n");
     }
 
     private void unmark(List<Task> lst){
-        Object[] taskArray = lst.toArray();
-
         Scanner reader = new Scanner(System.in);
         String n = reader.next();
         int num = reader.nextInt();
 
-        Task task = (Task) taskArray[num-1];
+        Task task = lst.get(num-1);
         task.unmark();
         System.out.println("____________________________________________________________\n" +
                 "OK, I've marked this task as not done yet: ");
-        System.out.println(taskArray[num -1].toString());
+        System.out.println(task);
         System.out.println("____________________________________________________________\n");
     }
 
@@ -202,4 +172,10 @@ public class Mars {
             }
 
     }
+
+    /* Level 7. Save */
+
+
+
+
 }
