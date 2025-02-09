@@ -1,8 +1,21 @@
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+/**
+ * Mars class is the entry point of the taskbot's execution
+ *
+ */
 
 public class Mars {
+    private static final String HORIZONTAL_LINE = "____________________________________________________________\n"
+
     public static void main(String[] args) {
         List<Task> arrayList = new ArrayList<>();
         try{
@@ -28,9 +41,7 @@ public class Mars {
         String n = reader.nextLine();
 
         while(!n.equals("bye")){
-            System.out.println("____________________________________________________________\n" +
-                                n +
-                                "\n____________________________________________________________\n");
+            System.out.println( HORIZONTAL_LINE+ n + "\n" + HORIZONTAL_LINE);
             n = reader.nextLine();
         }
         System.out.println("Bye. Hope to see you again soon!");
@@ -49,9 +60,7 @@ public class Mars {
             else {
                 Task task = new Task(n);
                 arrayList.add(task);
-                String output = "____________________________________________________________\n" +
-                        "added: " + n +
-                        "\n____________________________________________________________\n";
+                String output = HORIZONTAL_LINE + "added: " + n + "\n" + HORIZONTAL_LINE;
                 System.out.println(output);
             }
             n = reader.nextLine();
@@ -61,14 +70,14 @@ public class Mars {
     }
 
     private static void list(List<Task> lst){
-        System.out.println("____________________________________________________________\n");
+        System.out.println(HORIZONTAL_LINE);
         System.out.println("Here are the tasks in your list:\n");
         int i = 1;
         while(i <= lst.size()){
             System.out.println(i + "." + lst.get(i-1));
             i += 1;
         }
-        System.out.println("____________________________________________________________\n");
+        System.out.println(HORIZONTAL_LINE);
     }
 
     /*LEVEL 3*/
@@ -79,10 +88,10 @@ public class Mars {
         Task task = lst.get(num-1);
         task.markAsDone();
 
-        System.out.println("____________________________________________________________\n" +
+        System.out.println(HORIZONTAL_LINE +
                 "Nice! I've marked this task as done: ");
         System.out.println(task);
-        System.out.println("____________________________________________________________\n");
+        System.out.println(HORIZONTAL_LINE);
     }
 
     private void unmark(List<Task> lst){
@@ -92,22 +101,21 @@ public class Mars {
 
         Task task = lst.get(num-1);
         task.unmark();
-        System.out.println("____________________________________________________________\n" +
+        System.out.println(HORIZONTAL_LINE +
                 "OK, I've marked this task as not done yet: ");
         System.out.println(task);
-        System.out.println("____________________________________________________________\n");
+        System.out.println(HORIZONTAL_LINE);
     }
 
     private void addTask(List<Task> lst){
         Scanner reader = new Scanner(System.in);
         String taskType = reader.next();
         String description = reader.nextLine();
-        System.out.println("____________________________________________________________\n");
+        System.out.println(HORIZONTAL_LINE);
         switch(taskType){
             case "todo":
                 if (description.isEmpty()){
-                    throw new marsException("OOPS!!! The description of a " + taskType + " cannot be empty\n " +
-                            "____________________________________________________________\n");
+                    throw new marsException("OOPS!!! The description of a " + taskType + " cannot be empty\n " + HORIZONTAL_LINE);
                 }
                 else {
                     System.out.println("Got it. I've added this task: \n");
@@ -117,7 +125,7 @@ public class Mars {
             case "deadline" :
                 if (description.isEmpty()){
                     throw new marsException("OOPS!!! The description of a " + taskType + " cannot be empty\n " +
-                            "____________________________________________________________\n");
+                            HORIZONTAL_LINE);
                 }
                 else {
                     String[] parts = description.split("/by", 2);
@@ -129,7 +137,7 @@ public class Mars {
             case "event" :
                 if (description.isEmpty()){
                     throw new marsException("OOPS!!! The description of a " + taskType + " cannot be empty\n " +
-                            "____________________________________________________________\n");
+                            HORIZONTAL_LINE);
                 }
                 else {
                     String[] event = description.split("/from | /to ", 3);
@@ -138,8 +146,7 @@ public class Mars {
                     lst.add(new Event(eventDesc));
                 }
                 break;
-                default: throw new marsException("OOPS!!! I'm sorry, but I don't know what that means :-(\n" +
-                        "____________________________________________________________\n");
+                default: throw new marsException("OOPS!!! I'm sorry, but I don't know what that means :-(\n" + HORIZONTAL_LINE);
         }
         System.out.println(lst.getLast());
 
@@ -149,7 +156,7 @@ public class Mars {
         else{
             System.out.println("  Now you have " + lst.size() + " tasks in the list.\n");
         }
-        System.out.println("____________________________________________________________\n");
+        System.out.println(HORIZONTAL_LINE);
 
     }
 
@@ -157,7 +164,7 @@ public class Mars {
         Scanner reader = new Scanner(System.in);
         String delete = reader.next();
         int num = reader.nextInt();
-        System.out.println("____________________________________________________________\n");
+        System.out.println(HORIZONTAL_LINE);
             try {
                 Task task = lst.get(num - 1);
                 System.out.println("Noted. I've removed this task: " + task.toString());
