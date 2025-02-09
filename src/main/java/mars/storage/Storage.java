@@ -4,8 +4,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+/* Level 7. Save */
 
-/** mars.storage.Storage class handles the loading and storing
+/** Storage class handles the loading and storing
  *  of tasks to and from the designated file path
  *
  */

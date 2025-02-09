@@ -12,7 +12,7 @@ import mars.task.Todo;
 
 
 /**
- * mars.Mars class is the entry point of the taskbot's execution
+ * Mars class is the entry point of the taskbot's execution
  */
 
 public class Mars {
@@ -22,7 +22,7 @@ public class Mars {
     private static final String HORIZONTAL_LINE = "____________________________________________________________\n";
 
     /**
-     * Constructor to instantiate mars.Mars instance with
+     * Constructor to instantiate Mars instance with
      * the file path of marsBot.txt
      *
      * @param filePath The file path of marsBot.txt storing the tasks
@@ -34,11 +34,25 @@ public class Mars {
 
     public static void main(String[] args) {
         List<Task> tasks = new ArrayList<>();
+        Mars.greet();
         try{
-            Mars mars = new Mars("./data/MarsBot.txt");
-            while ()
-
-
+            Mars mars = new Mars("./data/marsBot.txt");
+            while (true){
+                Scanner reader = new Scanner(System.in);
+                String command = reader.nextLine();
+                if (command.equals("echo")){
+                    Mars.echo();
+                }
+                else if (command.equals("bye")){
+                    Mars.bye();
+                }
+                else if (command.equals("list")){
+                    Mars.list(tasks);
+                }
+                else if(command.equals("mark")){
+                    //stub 
+                }
+            }
         } catch (marsException e) {
             System.out.println(e.getMessage());
         }
@@ -47,22 +61,28 @@ public class Mars {
         }
     }
     /*Level 1. Echo*/
-    private void echo(){
+    private static void bye(){
+        System.out.println("Bye. Hope to see you again soon!");
+    }
+
+    private static void greet(){
         System.out.println(" Hello! I'm mars.Mars\n What can I do for you?\n");
+    }
+
+    private static void echo(){
         Scanner reader = new Scanner(System.in);
         String n = reader.nextLine();
 
-        while(!n.equals("bye")){
-            System.out.println( HORIZONTAL_LINE+ n + "\n" + HORIZONTAL_LINE);
+        while(!n.equals("bye")) {
+            System.out.println(HORIZONTAL_LINE + n + "\n" + HORIZONTAL_LINE);
             n = reader.nextLine();
         }
-        System.out.println("Bye. Hope to see you again soon!");
         // reader.close();
     }
 
     /*Level 2. Add, List */
     private void store(List<Task> arrayList){
-        System.out.println(" Hello! I'm mars.Mars\n What can I do for you?\n");
+        Mars.greet();
         Scanner reader = new Scanner(System.in);
         String n = reader.nextLine();
         while(!n.equals("bye")){
@@ -77,7 +97,7 @@ public class Mars {
             }
             n = reader.nextLine();
         }
-        System.out.println("Bye. Hope to see you again soon!");
+        Mars.bye();
         //reader.close();
     }
 
@@ -191,9 +211,6 @@ public class Mars {
             }
 
     }
-
-    /* Level 7. Save */
-
 
 
 
