@@ -1,32 +1,44 @@
+package mars;
+
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+
+import mars.storage.Storage;
+import mars.task.Deadline;
+import mars.task.Event;
+import mars.task.Task;
+import mars.task.Todo;
+
 
 /**
- * Mars class is the entry point of the taskbot's execution
- *
+ * mars.Mars class is the entry point of the taskbot's execution
  */
 
 public class Mars {
-    private static final String HORIZONTAL_LINE = "____________________________________________________________\n"
+    private List<Task> tasks;
+    private Storage storage;
+
+    private static final String HORIZONTAL_LINE = "____________________________________________________________\n";
+
+    /**
+     * Constructor to instantiate mars.Mars instance with
+     * the file path of marsBot.txt
+     *
+     * @param filePath The file path of marsBot.txt storing the tasks
+     */
+    public Mars(String filePath){
+          this.storage = new Storage(filePath);
+          this.tasks = new ArrayList<>();
+    }
 
     public static void main(String[] args) {
-        List<Task> arrayList = new ArrayList<>();
+        List<Task> tasks = new ArrayList<>();
         try{
-            Mars mars = new Mars();
-            mars.addTask(arrayList);
-            mars.addTask(arrayList);
-            mars.addTask(arrayList);
-            mars.mark(arrayList);
-            mars.unmark(arrayList);
-            Mars.list(arrayList);
-            // mars.deleteTask(arrayList);
+            Mars mars = new Mars("./data/MarsBot.txt");
+            while ()
+
+
         } catch (marsException e) {
             System.out.println(e.getMessage());
         }
@@ -36,7 +48,7 @@ public class Mars {
     }
     /*Level 1. Echo*/
     private void echo(){
-        System.out.println(" Hello! I'm Mars\n What can I do for you?\n");
+        System.out.println(" Hello! I'm mars.Mars\n What can I do for you?\n");
         Scanner reader = new Scanner(System.in);
         String n = reader.nextLine();
 
@@ -50,7 +62,7 @@ public class Mars {
 
     /*Level 2. Add, List */
     private void store(List<Task> arrayList){
-        System.out.println(" Hello! I'm Mars\n What can I do for you?\n");
+        System.out.println(" Hello! I'm mars.Mars\n What can I do for you?\n");
         Scanner reader = new Scanner(System.in);
         String n = reader.nextLine();
         while(!n.equals("bye")){
