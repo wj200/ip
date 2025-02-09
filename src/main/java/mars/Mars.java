@@ -49,8 +49,17 @@ public class Mars {
                 else if (command.equals("list")){
                     Mars.list(tasks);
                 }
-                else if(command.equals("mark")){
-                    //stub 
+                else if(command.startsWith("mark")){
+                    int index = Integer.parseInt(command.split(" ")[1]);
+                    Task task = tasks.get(index-1);
+                    task.markAsDone();
+                    Mars.mark(task);
+                }
+                else if (command.startsWith("mark")){
+                    int index = Integer.parseInt(command.split(" ")[1]);
+                    Task task = tasks.get(index-1);
+                    task.unmark();
+                    Mars.unmark(task);
                 }
             }
         } catch (marsException e) {
@@ -113,26 +122,14 @@ public class Mars {
     }
 
     /*LEVEL 3*/
-    private void mark(List<Task> lst){
-        Scanner reader = new Scanner(System.in);
-        String n = reader.next();
-        int num = reader.nextInt();
-        Task task = lst.get(num-1);
-        task.markAsDone();
-
+    private static void mark(Task task){
         System.out.println(HORIZONTAL_LINE +
                 "Nice! I've marked this task as done: ");
         System.out.println(task);
         System.out.println(HORIZONTAL_LINE);
     }
 
-    private void unmark(List<Task> lst){
-        Scanner reader = new Scanner(System.in);
-        String n = reader.next();
-        int num = reader.nextInt();
-
-        Task task = lst.get(num-1);
-        task.unmark();
+    private static void unmark(Task task){
         System.out.println(HORIZONTAL_LINE +
                 "OK, I've marked this task as not done yet: ");
         System.out.println(task);
