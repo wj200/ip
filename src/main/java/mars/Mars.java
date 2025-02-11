@@ -1,7 +1,6 @@
 package mars;
 
 import java.util.Scanner;
-import java.util.List;
 import java.util.ArrayList;
 
 import mars.storage.Storage;
@@ -16,7 +15,8 @@ import mars.task.Todo;
  */
 
 public class Mars {
-    private List<Task> tasks;
+    private ArrayList<Task> tasks;
+    private ArrayList<String> taskStrings;
     private Storage storage;
 
     private static final String HORIZONTAL_LINE = "____________________________________________________________\n";
@@ -29,11 +29,11 @@ public class Mars {
      */
     public Mars(String filePath){
           this.storage = new Storage(filePath);
-          this.tasks = new ArrayList<>();
+          this.taskStrings = new ArrayList<>(storage.load());
     }
 
     public static void main(String[] args) {
-        List<Task> tasks = new ArrayList<>();
+        ArrayList<Task> tasks = new ArrayList<>();
         Mars.greet();
         try{
             Mars mars = new Mars("./data/marsBot.txt");
@@ -55,18 +55,27 @@ public class Mars {
                     task.markAsDone();
                     Mars.mark(task);
                 }
-                else if (command.startsWith("mark")){
+                else if (command.startsWith("unmark")){
                     int index = Integer.parseInt(command.split(" ")[1]);
                     Task task = tasks.get(index-1);
                     task.unmark();
                     Mars.unmark(task);
                 }
+                else if (command.startsWith("todo") || command.startsWith("deadline") ||command.startsWith("event") ){
+                    mars.addTask(tasks);
+                    mars.storage.save(tasks);
+                }
+                else if(command.startsWith("delete")){
+                    mars.deleteTask(tasks);
+                    mars.storage.save(tasks);
+                }
+                else {
+                    throw new IllegalArgumentException("Unknown command: " + command);
+                }
+
             }
         } catch (marsException e) {
             System.out.println(e.getMessage());
-        }
-        finally {
-            ;
         }
     }
     /*Level 1. Echo*/
@@ -75,7 +84,7 @@ public class Mars {
     }
 
     private static void greet(){
-        System.out.println(" Hello! I'm mars.Mars\n What can I do for you?\n");
+        System.out.println(" Hello! I'm Mars\n What can I do for you?\n");
     }
 
     private static void echo(){
@@ -90,7 +99,7 @@ public class Mars {
     }
 
     /*Level 2. Add, List */
-    private void store(List<Task> arrayList){
+    private void store(ArrayList<Task> arrayList){
         Mars.greet();
         Scanner reader = new Scanner(System.in);
         String n = reader.nextLine();
@@ -110,7 +119,7 @@ public class Mars {
         //reader.close();
     }
 
-    private static void list(List<Task> lst){
+    private static void list(ArrayList<Task> lst){
         System.out.println(HORIZONTAL_LINE);
         System.out.println("Here are the tasks in your list:\n");
         int i = 1;
@@ -136,7 +145,7 @@ public class Mars {
         System.out.println(HORIZONTAL_LINE);
     }
 
-    private void addTask(List<Task> lst){
+    private void addTask(ArrayList<Task> lst){
         Scanner reader = new Scanner(System.in);
         String taskType = reader.next();
         String description = reader.nextLine();
@@ -189,7 +198,7 @@ public class Mars {
 
     }
 
-    private void deleteTask(List<Task> lst){
+    private void deleteTask(ArrayList<Task> lst){
         Scanner reader = new Scanner(System.in);
         String delete = reader.next();
         int num = reader.nextInt();
