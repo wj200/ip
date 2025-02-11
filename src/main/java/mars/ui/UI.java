@@ -22,6 +22,10 @@ public class UI {
             System.out.println("Hello! I'm RuiBot\n" + "What can I do for you?\n");
             System.out.println(HORIZONTAL_LINE);
         }
+
+        public void showLine(){
+            System.out.println(HORIZONTAL_LINE);
+        }
             /**
              * Displays a given error message.
              *
