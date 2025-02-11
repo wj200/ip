@@ -9,6 +9,7 @@ import mars.task.Event;
 import mars.task.Task;
 import mars.task.Todo;
 
+import mars.ui.UI;
 
 /**
  * Mars class is the entry point of the taskbot's execution
@@ -18,8 +19,7 @@ public class Mars {
     private ArrayList<Task> tasks;
     private ArrayList<String> taskStrings;
     private Storage storage;
-
-    private static final String HORIZONTAL_LINE = "____________________________________________________________\n";
+    private UI ui;
 
     /**
      * Constructor to instantiate Mars instance with
@@ -29,14 +29,15 @@ public class Mars {
      */
     public Mars(String filePath){
           this.storage = new Storage(filePath);
+          this.ui = new UI();
           this.taskStrings = new ArrayList<>(storage.load());
     }
 
     public static void main(String[] args) {
-        ArrayList<Task> tasks = new ArrayList<>();
-        Mars.greet();
         try{
-            Mars mars = new Mars("./data/marsBot.txt");
+            ArrayList<Task> tasks = new ArrayList<>();
+            Mars mars = new Mars("./data/marsBot.txt" );
+            mars.ui.welcomeMessage();
             while (true){
                 Scanner reader = new Scanner(System.in);
                 String command = reader.nextLine();
@@ -44,7 +45,7 @@ public class Mars {
                     Mars.echo();
                 }
                 else if (command.equals("bye")){
-                    Mars.bye();
+                    mars.ui.goodbyeMessage();
                 }
                 else if (command.equals("list")){
                     Mars.list(tasks);
@@ -79,13 +80,6 @@ public class Mars {
         }
     }
     /*Level 1. Echo*/
-    private static void bye(){
-        System.out.println("Bye. Hope to see you again soon!");
-    }
-
-    private static void greet(){
-        System.out.println(" Hello! I'm Mars\n What can I do for you?\n");
-    }
 
     private static void echo(){
         Scanner reader = new Scanner(System.in);
