@@ -1,5 +1,7 @@
 package mars;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -15,7 +17,7 @@ import mars.command.Command;
 import mars.ui.UI;
 
 /**
- * Mars class is the entry point of the taskbot's execution
+ * Mars class is the entry point of the task bot's execution
  */
 
 public class Mars {
@@ -30,11 +32,11 @@ public class Mars {
      * @param filePath The file path of marsBot.txt storing the tasks
      */
     public Mars(String filePath){
-          this.storage = new Storage(filePath);
-          this.ui = new UI();
           try {
+              this.storage = new Storage(filePath);
+              this.ui = new UI();
               this.tasks = new TaskList(storage.load());
-          } catch (marsException e) {
+          } catch (IOException e) {
               ui.showError(e.getMessage());
               this.tasks = new TaskList();
           }
@@ -58,7 +60,7 @@ public class Mars {
         }
     }
     public static void main(String[] args) {
-        new Mars("./data/marsBot.txt").run();
+        new Mars("./../data/marsBot.txt").run();
         /*
         try{
             ArrayList<Task> tasks = new ArrayList<>();

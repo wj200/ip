@@ -29,7 +29,7 @@ public class Storage {
      * not exist at the start
      *
      */
-    public Storage(String filePath) {
+    public Storage(String filePath) throws IOException {
         try {
             this.file = new File(filePath);
             this.scanner = new Scanner(file);
@@ -64,4 +64,4 @@ public class Storage {
 
 
 
-}
+

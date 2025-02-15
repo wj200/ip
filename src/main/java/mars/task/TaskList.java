@@ -155,6 +155,7 @@ public class TaskList {
             }
         }
         public Task getLast(){
-            return tasks.getLast();
+            int size = this.size();
+            return tasks.get(size -1);
         }
 }
