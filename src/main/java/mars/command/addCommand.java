@@ -17,66 +17,66 @@ import mars.storage.Storage;
 
 public class addCommand extends Command {
     private static final String HORIZONTAL_LINE = "____________________________________________________________\n";
-
-    public addCommand(){
-
+    private String taskType;
+    private String details;
+    public addCommand(String taskType ,String details){
+        this.taskType = taskType;
+        this.details = details;
     }
-    public addCommand(){
-
-    }
-    public addCommand(){
-
-    }
-
 
     public void execute(TaskList tasklist, UI ui, Storage storage){
-        Scanner reader = new Scanner(System.in);
-        String taskType = reader.next();
-        String description = reader.nextLine();
-        System.out.println(HORIZONTAL_LINE);
+        String taskType = this.taskType;
+        String details = this.details;
+        String[] parts;
+
         switch(taskType){
             case "todo":
-                if (description.isEmpty()){
+                parts = details.split(" ", 2);
+                if (parts[1].isEmpty()){
                     throw new marsException("OOPS!!! The description of a " + taskType + " cannot be empty\n " + HORIZONTAL_LINE);
                 }
                 else {
                     System.out.println("Got it. I've added this task: \n");
-                    lst.add(new Todo(description));
+                    tasklist.add(new Todo(parts[1], false));
                 }
                 break;
             case "deadline" :
-                if (description.isEmpty()){
-                    throw new marsException("OOPS!!! The description of a " + taskType + " cannot be empty\n " +
-                            HORIZONTAL_LINE);
+                parts = details.split("/by", 2);
+                if (parts[1].isEmpty()){
+                    throw new marsException("Invalid or empty description of a " + taskType + "\n" +HORIZONTAL_LINE);
                 }
                 else {
-                    String[] parts = description.split("/by", 2);
                     String deadlineDesc = parts[0] + "(by: " + parts[1] + ")";
                     System.out.println("Got it. I've added this task: \n");
-                    lst.add(new Deadline(deadlineDesc));
+                    tasklist.add(new Deadline(deadlineDesc, false));
                 }
                 break;
             case "event" :
-                if (description.isEmpty()){
-                    throw new marsException("OOPS!!! The description of a " + taskType + " cannot be empty\n " +
-                            HORIZONTAL_LINE);
+                parts = details.split(" ", 2);
+                if (parts[1].isEmpty()){
+                    throw new marsException("OOPS!!! The description of a " + taskType + " cannot be empty\n " + HORIZONTAL_LINE);
                 }
                 else {
-                    String[] event = description.split("/from | /to ", 3);
-                    String eventDesc = event[0] + "from: " + event[1] + " to: " + event[2];
-                    System.out.println("Got it. I've added this task: \n");
-                    lst.add(new Event(eventDesc));
+                    String[] event = parts[1].split("/from | /to ", 3);
+                    if (event[0].isEmpty() || event[1].isEmpty() || event[2].isEmpty()){
+                        throw new marsException("Invalid or empty description of a " + taskType + "\n" +HORIZONTAL_LINE);
+                    }
+                    else {
+                        String eventDesc = event[0] + "from: " + event[1] + " to: " + event[2];
+                        System.out.println("Got it. I've added this task: \n");
+                        tasklist.add(new Event(eventDesc, false));
+                    }
                 }
                 break;
             default: throw new marsException("OOPS!!! I'm sorry, but I don't know what that means :-(\n" + HORIZONTAL_LINE);
         }
-        System.out.println(lst.getLast());
+        System.out.println(tasklist.getLast());
 
-        if(lst.size() == 1){
+        if(tasklist.size() == 1){
             System.out.println("  Now you have 1 task in the list.\n");
         }
         else{
-            System.out.println("  Now you have " + lst.size() + " tasks in the list.\n");
+            System.out.println("  Now you have " + tasklist.size() + " tasks in the list.\n");
         }
         System.out.println(HORIZONTAL_LINE);
 

@@ -15,14 +15,14 @@ public abstract class Command {
      * Executes command with the given task list, user interface, and storage.
      *
      * @param tasklist The task list to modify.
-     * @param ui      The user interface
-     * @param storage  handler for the loading and storing  of tasks
+     * @param ui       The user interface
+     * @param storage  handler for the loading and storing of tasks
      *
      */
     public abstract void execute(TaskList tasklist,UI ui, Storage storage);
 
     public boolean isExit(){
-        return false;
+        return true;
     }
 
 

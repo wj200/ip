@@ -12,25 +12,18 @@ import mars.storage.Storage;
 
 public class deleteCommand extends Command{
     private static final String HORIZONTAL_LINE = "____________________________________________________________\n";
+    private int itemNumber;
+
+    public deleteCommand(int itemNumber){
+        super();
+        this.itemNumber = itemNumber;
+    }
 
     public void execute(TaskList tasklist, UI ui, Storage storage){
-        Scanner reader = new Scanner(System.in);
-        String delete = reader.next();
-        int num = reader.nextInt();
-        System.out.println(HORIZONTAL_LINE);
-        try {
-            Task task = tasklist.get(num - 1);
-            System.out.println("Noted. I've removed this task: " + task.toString());
-            tasklist.delete(num);
-            System.out.println("Now you have " + tasklist.size() + " tasks in the list.\n");
-        }
-        catch(IndexOutOfBoundsException e){
-            System.out.println("Please input a valid index\n");
-        }
-        finally {
-            reader.close();
-        }
-
+        Task task = tasklist.get(itemNumber - 1);
+        System.out.println("Noted. I've removed this task: " + task.toString());
+        tasklist.delete(itemNumber -1);
+        System.out.println("Now you have " + tasklist.size() + " tasks in the list.\n" + HORIZONTAL_LINE);
     }
 
 }

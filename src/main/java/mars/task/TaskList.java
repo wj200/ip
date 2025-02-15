@@ -30,20 +30,21 @@ public class TaskList {
      */
     public TaskList(ArrayList<String> tasks) {
         this.tasks = new ArrayList<>();
-
         try{
         for (String line : tasks) {
             String desc;
             boolean isDone = (line.charAt(5) == 'X');
             if (line.charAt(1) == 'T') {
                  desc = "todo " + line.substring(8);
+                 this.add(new Todo(desc, isDone));
             } else if (line.charAt(1) == 'D') {
                 String remaining_line = line.substring(8);
                 String[] split_line = remaining_line.split(" \\(by: ");
                 String name = split_line[0];
                 String endDate = split_line[1].split("\\)")[0];
                 String formattedEndDate = LocalDateTime.parse(endDate, OUTPUT_FORMATTER).format(INPUT_FORMATTER);
-                 desc= "deadline " + name + " /by " + formattedEndDate;
+                 desc= "deadline " + name + " by " + formattedEndDate;
+                 this.add(new Deadline(desc, isDone));
             } else {
                 String remaining_line = line.substring(8);
                 String[] split_line = remaining_line.split(" \\(from: ");
@@ -53,9 +54,9 @@ public class TaskList {
                 String formattedStartDate = LocalDateTime.parse(startDate, OUTPUT_FORMATTER).format(INPUT_FORMATTER);
                 String endDate = dates[1].split("\\)")[0];
                 String formattedEndDate = LocalDateTime.parse(endDate, OUTPUT_FORMATTER).format(INPUT_FORMATTER);
-                desc = "event " + name + " /from " + formattedStartDate + " /to " + formattedEndDate;
+                desc = "event " + name + " from " + formattedStartDate + " to " + formattedEndDate;
+                this.add(new Event(desc, isDone));
             }
-            this.add(new Task(desc, isDone));
         }
         } catch (PatternSyntaxException e) {
            System.out.println("PatternSyntaxException: " + e.getMessage());
@@ -97,7 +98,7 @@ public class TaskList {
      * @param index array index of the task to be marked as done
      * @throws marsException If the index is out of bounds.
      */
-        public void markAsDone(int index) throws marsException {
+        public void mark(int index) throws marsException {
             if (index < 0 || index >= tasks.size()) {
                 throw new marsException("invalid task number. Please mark again");
             }
@@ -110,7 +111,7 @@ public class TaskList {
          * @param index array index of the task to be unmarked
          * @throws marsException If the index is out of bounds.
          */
-        public void unmarkTask(int index) throws marsException {
+        public void unmark(int index) throws marsException {
             if (index < 0 || index >= tasks.size()) {
                 throw new marsException("invalid task number. Please unmark again");
             }
@@ -127,9 +128,11 @@ public class TaskList {
     /**
      * @return the task at the specified index
      */
-    public Task get(int index) throws marException {
+
+
+    public Task get(int index) throws marsException {
         if (index < 0 || index >= tasks.size()) {
-            throw new marsException("invalid task number. Please try to get the specified taks again");
+            throw new marsException("invalid task number. Please try to get the specified task again");
         }
         return tasks.get(index);
     }
@@ -151,5 +154,7 @@ public class TaskList {
                 }
             }
         }
-}
+        public Task getLast(){
+            return tasks.getLast();
+        }
 }

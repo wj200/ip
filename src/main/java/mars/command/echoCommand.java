@@ -7,14 +7,14 @@ import mars.storage.Storage;
 
 public class echoCommand extends Command{
     private static final String HORIZONTAL_LINE = "____________________________________________________________\n";
+    private String echo;
+
+    public echoCommand(String echo){
+        this.echo = echo;
+    }
 
     public void execute(TaskList tasks, UI ui, Storage storage){
-        Scanner reader = new Scanner(System.in);
-        String n = reader.nextLine();
-        while(!n.equals("bye")) {
-            System.out.println(HORIZONTAL_LINE + n + "\n" + HORIZONTAL_LINE);
-            n = reader.nextLine();
-        }
-        reader.close();
+        System.out.println(this.echo + "\n" + HORIZONTAL_LINE);
     }
+
 }

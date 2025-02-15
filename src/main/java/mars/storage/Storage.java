@@ -21,7 +21,6 @@ public class Storage {
     private Scanner scanner;
     private String filePath;
 
-
     /**
      * Constructor to instantiate Storage instance
      *

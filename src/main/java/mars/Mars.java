@@ -33,13 +33,30 @@ public class Mars {
           this.storage = new Storage(filePath);
           this.ui = new UI();
           try {
-              tasks = new TaskList(storage.load());
+              this.tasks = new TaskList(storage.load());
           } catch (marsException e) {
               ui.showError(e.getMessage());
-              tasks = new TaskList();
+              this.tasks = new TaskList();
           }
-        }
+    }
 
+    public void run() {
+        ui.welcomeMessage();
+        boolean isExit = false;
+        while (!isExit) {
+            try {
+                String fullCommand = ui.readCommand();
+                ui.showLine();
+                Command c = Parser.parse(fullCommand);
+                c.execute(tasks, ui, storage);
+                isExit = c.isExit();
+            } catch (marsException e) {
+                ui.showError(e.getMessage());
+            } finally {
+                ui.showLine();
+            }
+        }
+    }
     public static void main(String[] args) {
         new Mars("./data/marsBot.txt").run();
         /*
@@ -88,24 +105,4 @@ public class Mars {
             System.out.println(e.getMessage());
         } */
     }
-
-    public void run() {
-        ui.welcomeMessage();
-        boolean isExit = false;
-        while (!isExit) {
-            try {
-                String fullCommand = ui.readCommand();
-                ui.showLine(); // show the divider line ("_______")
-                Command c = Parser.parse(fullCommand);
-                c.execute(tasks, ui, storage);
-                isExit = c.isExit();
-            } catch (marsException e) {
-                ui.showError(e.getMessage());
-            } finally {
-                ui.showLine();
-            }
-        }
-    }
-
-
 }

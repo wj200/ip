@@ -1,13 +1,7 @@
 package mars.parser;
 
-import mars.command.echoCommand;
-import mars.command.addCommand;
-import mars.command.deleteCommand;
-import mars.command.listCommand;
-import mars.command.markCommand;
-import mars.command.unmarkCommand;
+import mars.command.*;
 import mars.marsException;
-import mars.command.Command;
 
 /**
  * Parser class deals with making sense of the user command
@@ -21,31 +15,33 @@ public class Parser {
      *
      * @param userInput The raw input provided by the user.
      * @return The command object.
-     * @throws marsException If the input format is incorrect
      */
-    public Command parse(String userInput) throws marsException {
-        String[] parts = userInput.split(" ", 3);
+    public static Command parse(String userInput){
+        String[] parts = userInput.split(" ", 2);
         String commandWord = parts[0];
-        switch(commandWord) {
-            case "echo":
-                return new echoCommand();
+        Integer index;
+        switch (commandWord) {
             case "todo":
-                return new addCommand();
+                return new addCommand(commandWord,userInput);
             case "deadline":
-                return new addCommand();
+                return new addCommand(commandWord,userInput);
+            case "event":
+                return new addCommand(commandWord,userInput);
             case "delete":
-                Integer index = Integer.valueOf(parts[1]);
-                return new deleteCommand();
+                index = Integer.valueOf(parts[1]);
+                return new deleteCommand(index);
             case "list":
                 return new listCommand();
             case "mark":
-                Integer index = Integer.valueOf(parts[1]);
+                index = Integer.valueOf(parts[1]);
                 return new markCommand(index);
             case "unmark":
-                Integer index = Integer.valueOf(parts[1]);
+                index = Integer.valueOf(parts[1]);
                 return new unmarkCommand(index);
+            case "bye":
+                return new byeCommand();
             default:
-                throw new marsException("Unknown command: " + commandWord);
+                return new echoCommand(commandWord);
         }
     }
 
