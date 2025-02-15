@@ -19,7 +19,7 @@ public class UI {
          */
         public void welcomeMessage() {
             System.out.println(HORIZONTAL_LINE);
-            System.out.println("Hello! I'm RuiBot\n" + "What can I do for you?\n");
+            System.out.println("Hello! I'm Mars\n" + "What can I do for you?\n");
             System.out.println(HORIZONTAL_LINE);
         }
 
