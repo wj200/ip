@@ -9,11 +9,11 @@ import mars.marsException;
 
 /**
  * Wrapper class to an ArrayList of tasks
- * add, delete, mark, and unmark operations
+ * provides add, delete, mark, and unmark operations
  */
 public class TaskList {
-    static final DateTimeFormatter INPUT_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
-    static final DateTimeFormatter OUTPUT_FORMATTER = DateTimeFormatter.ofPattern("MMM dd yyyy, h:mm a");
+    static final DateTimeFormatter YEAR_MONTH_DAY = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    static final DateTimeFormatter MONTH_DAY_YEAR = DateTimeFormatter.ofPattern("MMM dd yyyy, HH:mm");
     private ArrayList<Task> tasks;
 
     /**
@@ -42,18 +42,18 @@ public class TaskList {
                 String[] split_line = remaining_line.split(" \\(by: ");
                 String name = split_line[0];
                 String endDate = split_line[1].split("\\)")[0];
-                String formattedEndDate = LocalDateTime.parse(endDate, OUTPUT_FORMATTER).format(INPUT_FORMATTER);
-                 desc= "deadline " + name + " by " + formattedEndDate;
-                 this.add(new Deadline(desc, isDone));
+                String formattedEndDate = LocalDateTime.parse(endDate, MONTH_DAY_YEAR).format(YEAR_MONTH_DAY);
+                desc= "deadline " + name + " by " + formattedEndDate;
+                this.add(new Deadline(desc, isDone));
             } else {
                 String remaining_line = line.substring(8);
                 String[] split_line = remaining_line.split(" \\(from: ");
                 String name = split_line[0];
                 String[] dates = split_line[1].split(" to: ");
                 String startDate = dates[0];
-                String formattedStartDate = LocalDateTime.parse(startDate, OUTPUT_FORMATTER).format(INPUT_FORMATTER);
+                String formattedStartDate = LocalDateTime.parse(startDate, MONTH_DAY_YEAR).format(YEAR_MONTH_DAY);
                 String endDate = dates[1].split("\\)")[0];
-                String formattedEndDate = LocalDateTime.parse(endDate, OUTPUT_FORMATTER).format(INPUT_FORMATTER);
+                String formattedEndDate = LocalDateTime.parse(endDate, MONTH_DAY_YEAR).format(YEAR_MONTH_DAY);
                 desc = "event " + name + " from " + formattedStartDate + " to " + formattedEndDate;
                 this.add(new Event(desc, isDone));
             }
