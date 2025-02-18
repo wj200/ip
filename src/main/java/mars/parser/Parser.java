@@ -40,7 +40,11 @@ public class Parser {
                 return new unmarkCommand(index);
             case "bye":
                 return new byeCommand();
+            case "find":
+                String keyword = parts[1];
+                return new findCommand(keyword);
             default:
+                // revisit this functionality
                 return new echoCommand(commandWord);
         }
     }

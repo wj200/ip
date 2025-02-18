@@ -23,10 +23,10 @@ public class Storage {
 
     /**
      * Constructor to instantiate Storage instance
-     *
-     * @param filePath The file path of marsBot.txt storing the tasks
      * handles the FileNotFoundException case where the data file does
      * not exist at the start
+     *
+     * @param filePath The file path of marsBot.txt storing the tasks
      *
      */
     public Storage(String filePath) throws IOException {
