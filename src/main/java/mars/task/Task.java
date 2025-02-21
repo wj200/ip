@@ -1,17 +1,19 @@
+package mars.task;
+
 public class Task {
     protected String description;
     protected boolean isDone;
 
-    public Task(String description) {
+    public Task(String description, boolean isDone) {
         this.description = description;
-        this.isDone = false;
+        this.isDone = isDone;
     }
 
     public String getStatusIcon() {
         return (isDone ? "X" : " "); // mark done task with X
     }
 
-    public void markAsDone(){
+    public void mark(){
         this.isDone = true;
     }
 

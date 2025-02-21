@@ -1,0 +1,4 @@
+[T] [ ] read book
+[D] [ ] return book (by: Feb 02 2024, 6:00 pm)
+[T] [X] join sports club
+[E] [X] project meeting 2 (from: Feb 28 2024, 6:00 am to: Mar 03 2024, 8:00 am)
