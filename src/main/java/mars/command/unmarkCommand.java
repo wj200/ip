@@ -17,11 +17,15 @@ public class unmarkCommand extends Command{
    }
 
     public void execute(TaskList tasklist, UI ui, Storage storage){
-        tasklist.unmark(itemNumber -1);
-        Task task = tasklist.get(itemNumber -1);
-        System.out.println("OK, I've marked this task as not done yet: ");
-        System.out.println(task);
-        System.out.println(HORIZONTAL_LINE);
+        Task task = tasklist.get(itemNumber - 1);
+        if(task.getStatusIcon().equals("X")){
+            tasklist.unmark(itemNumber -1);
+            System.out.println("OK, I've marked this task as not done yet: ");
+            System.out.println(task);
+            System.out.println(HORIZONTAL_LINE);
+        } else{
+            System.out.println("This task was already unmarked.");
+        }
     }
 
 }

@@ -12,8 +12,8 @@ import mars.marsException;
  * provides add, delete, mark, and unmark operations
  */
 public class TaskList {
-    static final DateTimeFormatter YEAR_MONTH_DAY = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-    static final DateTimeFormatter MONTH_DAY_YEAR = DateTimeFormatter.ofPattern("MMM dd yyyy, HH:mm");
+    static final DateTimeFormatter YEAR_MONTH_DAY = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"); // output: 2025-02-22 1430
+    static final DateTimeFormatter MONTH_DAY_YEAR = DateTimeFormatter.ofPattern("MMM dd yyyy, h:mm a"); // output: Feb 22 2025, 2:30 PM
     private ArrayList<Task> tasks;
 
     /**
@@ -35,8 +35,8 @@ public class TaskList {
             String desc;
             boolean isDone = (line.charAt(4) == 'X');
             if (line.charAt(1) == 'T') {
-                // unmarked task should follow format: [T][ ] run with an empty
-                // space in between second box so that line.substring() can be standardised to index 7
+                /* unmarked task should follow format: [T][ ] run with an empty
+                space in between second box so that line.substring() can be standardised to index 7 */
                 desc = line.substring(7);
                 this.add(new Todo(desc, isDone));
             } else if (line.charAt(1) == 'D') {

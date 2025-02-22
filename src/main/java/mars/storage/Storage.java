@@ -40,6 +40,7 @@ public class Storage {
             System.out.println("File was not found initially. New empty file created.\n");
         }*/
         this.file = new File(filePath);
+        this.filePath = filePath;
         if (!file.exists()) {
             if (file.createNewFile()) {
                 System.out.println("File was not found initially. New empty file created.\n");
@@ -58,6 +59,7 @@ public class Storage {
 
     public ArrayList<String> load() {
         ArrayList<String> lines = new ArrayList<>();
+        // scanner should contain file contents at this line of execution
         while (this.scanner.hasNext()) {
             String line = this.scanner.nextLine();
             lines.add(line);
