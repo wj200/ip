@@ -30,15 +30,31 @@ public class Storage {
      *
      */
     public Storage(String filePath) throws IOException {
-        try {
+        /*try {
             this.file = new File(filePath);
             this.scanner = new Scanner(file);
         } catch (FileNotFoundException e) {
             // creates an empty file if a file with this name does not exist yet
             file.createNewFile();
+            this.scanner = new Scanner(file);
             System.out.println("File was not found initially. New empty file created.\n");
+        }*/
+        this.file = new File(filePath);
+        if (!file.exists()) {
+            if (file.createNewFile()) {
+                System.out.println("File was not found initially. New empty file created.\n");
+            } else {
+                throw new IOException("Failed to create new file: " + filePath);
+            }
+        }
+
+        try {
+            this.scanner = new Scanner(file);
+        } catch (FileNotFoundException e) {
+            throw new IOException("Unexpected error: File should exist but cannot be read.", e);
         }
     }
+
 
     public ArrayList<String> load() {
         ArrayList<String> lines = new ArrayList<>();

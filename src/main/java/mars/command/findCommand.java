@@ -17,7 +17,7 @@ public class findCommand extends Command{
      * @param keyword The word that is used to search for matches
      * among task descriptions
      */
-    /
+
     public findCommand(String keyword){
         this.keyword = keyword;
     }
@@ -26,7 +26,7 @@ public class findCommand extends Command{
      * Executes the find command by searching all tasks
      * that contain the keyword
      *
-     * @param TaskList
+     * @param tasklist
      * @param ui
      * @param storage
      *
@@ -38,7 +38,8 @@ public class findCommand extends Command{
         String description;
 
         for(int i=0; i<tasklist.size(); i++){
-            description = tasklist.get(i).getDescription().toLowerCase();
+            Task task = tasklist.get(i);
+            description = task.getDescription().toLowerCase();
             if(description.contains(keyword.toLowerCase())){
                 matches.add(task);
             }
@@ -50,7 +51,7 @@ public class findCommand extends Command{
         } else{
             ui.showLine();
             System.out.println("Here are the matching tasks in your list:\n");
-            for(int i=0; i<matches.size(); i++){
+            for (int i=0; i<matches.size(); i++){
                 System.out.println(matches.get(i).toString());
             }
             ui.showLine();

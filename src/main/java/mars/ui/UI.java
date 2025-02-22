@@ -26,12 +26,13 @@ public class UI {
         public void showLine(){
             System.out.println(HORIZONTAL_LINE);
         }
-            /**
-             * Displays a given error message.
-             *
-             * @param message The error message to display.
-             */
-            public void showError(String message) {
+
+        /**
+         * Displays a given error message.
+         *
+         * @param message The error message to display.
+         */
+        public void showError(String message) {
                 System.out.println(message);
             }
 
