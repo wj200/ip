@@ -37,6 +37,12 @@ public class Mars {
         this.tasks = new TaskList(storage.load());
     }
 
+
+
+    public String getResponse(String input) {
+        return "Mars heard: " + input;
+    }
+
     public void run() throws IOException{
         ui.welcomeMessage();
         boolean isExit = false;
