@@ -1,18 +1,13 @@
 package mars.command;
 
-import mars.Mars;
 import mars.marsException;
+import mars.storage.Storage;
 import mars.task.Deadline;
 import mars.task.Event;
-import mars.task.Task;
-import mars.task.Todo;
-
-import java.util.ArrayList;
-import java.util.Scanner;
-
 import mars.task.TaskList;
+import mars.task.Todo;
 import mars.ui.UI;
-import mars.storage.Storage;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 

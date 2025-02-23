@@ -1,13 +1,9 @@
 package mars.command;
 
+import mars.storage.Storage;
 import mars.task.Task;
-
-import java.util.ArrayList;
-import java.util.Scanner;
-
 import mars.task.TaskList;
 import mars.ui.UI;
-import mars.storage.Storage;
 
 
 public class deleteCommand extends Command{

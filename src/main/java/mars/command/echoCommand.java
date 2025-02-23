@@ -1,9 +1,8 @@
 package mars.command;
 
-import java.util.Scanner;
+import mars.storage.Storage;
 import mars.task.TaskList;
 import mars.ui.UI;
-import mars.storage.Storage;
 
 public class echoCommand extends Command{
     private static final String HORIZONTAL_LINE = "____________________________________________________________\n";
