@@ -18,6 +18,7 @@ public class unmarkCommand extends Command{
 
     public void execute(TaskList tasklist, UI ui, Storage storage){
         Task task = tasklist.get(itemNumber - 1);
+        assert task != null : "Task cannot be null.";
         if(task.getStatusIcon().equals("X")){
             tasklist.unmark(itemNumber -1);
             System.out.println("OK, I've marked this task as not done yet: ");

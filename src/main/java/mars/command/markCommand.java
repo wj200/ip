@@ -16,6 +16,7 @@ public class markCommand extends Command {
 
     public void execute(TaskList tasklist, UI ui, Storage storage) {
         Task task = tasklist.get(itemNumber - 1);
+        assert task != null : "Task cannot be null.";
         if(task.getStatusIcon().equals("X")){
             System.out.println("This task has already been marked.");
         }
