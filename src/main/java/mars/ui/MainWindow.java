@@ -35,7 +35,7 @@ public class MainWindow extends AnchorPane {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
     }
 
-    /** Injects the Duke instance */
+    /** Injects the Mars instance */
     public void setMars(Mars d) {
         mars = d;
     }
@@ -53,5 +53,9 @@ public class MainWindow extends AnchorPane {
                 DialogBox.getMarsDialog(response, marsImage)
         );
         userInput.clear();
+    }
+
+    public void displayWelcomeMessage() {
+
     }
 }

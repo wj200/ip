@@ -2,15 +2,11 @@ package mars.command;
 
 import mars.Mars;
 import mars.marsException;
-import mars.task.Deadline;
-import mars.task.Event;
-import mars.task.Task;
-import mars.task.Todo;
+import mars.task.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import mars.task.TaskList;
 import mars.ui.UI;
 import mars.storage.Storage;
 import java.time.LocalDateTime;
@@ -45,7 +41,7 @@ public class addCommand extends Command {
                     System.out.println("Got it. I've added this task: \n" + todo);
                 }
                 break;
-            case "deadline" :
+            case "deadline":
                 parts = details.split(" \\(by: ", 2);
                 if (parts[1].isEmpty()){
                     throw new marsException("Invalid or empty description of a " + taskType + "\n" +HORIZONTAL_LINE);
@@ -84,6 +80,19 @@ public class addCommand extends Command {
                     }
                 }
                 break;
+            case "do within":
+                 String[] firstPart = details.split(" ", 2);
+                 parts = firstPart[1].split(" ", 2);
+                 String[] desc = parts[1].split(" between: ", 2);
+                 String event = desc[0];
+                 String[] dates = desc[1].split(" and ", 2);
+                 String formattedStartDate = LocalDateTime.parse(dates[0], MONTH_DAY_YEAR).format(YEAR_MONTH_DAY);
+                 String formattedEndDate = LocalDateTime.parse(dates[1], MONTH_DAY_YEAR).format(YEAR_MONTH_DAY);
+                 String eventDesc = event + " between: " + formattedStartDate + " and " + formattedEndDate;
+                 DoWithin doWithinTask = new DoWithin(eventDesc, false);
+                 tasklist.add(doWithinTask);
+                 System.out.println("Got it. I've added this task: \n" + doWithinTask);
+
             default: throw new marsException("OOPS!!! I'm sorry, but I don't know what that means :-(\n" + HORIZONTAL_LINE);
         }
 

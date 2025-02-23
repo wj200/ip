@@ -32,6 +32,10 @@ public class Parser {
                 return new addCommand(commandWord,userInput);
             case "event":
                 return new addCommand(commandWord,userInput);
+            case "do":
+                String[] secondPart = parts[1].split(" ", 2);
+                commandWord = parts[0] + " " + secondPart[0];
+                return new addCommand(commandWord,userInput);
             case "delete":
                 index = Integer.valueOf(parts[1]);
                 return new deleteCommand(index);

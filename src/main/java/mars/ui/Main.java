@@ -27,7 +27,12 @@ public class Main extends Application {
             AnchorPane ap = fxmlLoader.load(); // interact with the AnchorPane defined in the FXML as we would have if we created the AnchorPane ourselves inside the Main class.
             Scene scene = new Scene(ap);
             stage.setScene(scene);
-            fxmlLoader.<MainWindow>getController().setMars(mars);  // inject the Mars instance
+            stage.setTitle("Mars - Tasklist Bot");
+
+            MainWindow controller = fxmlLoader.getController();
+            controller.setMars(mars); // inject the Mars instance
+            controller.displayWelcomeMessage();
+
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
