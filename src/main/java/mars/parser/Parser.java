@@ -17,9 +17,14 @@ public class Parser {
      * @return The command object.
      */
     public static Command parse(String userInput){
-        String[] parts = userInput.split(" ", 2);
-        String commandWord = parts[0];
         Integer index;
+
+        assert userInput != null : "userInput cannot be null.";
+        String[] parts = userInput.split(" ", 2);
+
+        assert parts[0] != null : "Command must not be null.";
+        String commandWord = parts[0];
+
         switch (commandWord) {
             case "todo":
                 return new addCommand(commandWord,userInput);
