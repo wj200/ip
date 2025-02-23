@@ -31,18 +31,19 @@ public class Mars {
      *
      * @param filePath The file path of marsBot.txt storing the tasks
      */
-    public Mars(String filePath){
-          try {
-              this.storage = new Storage(filePath);
-              this.ui = new UI();
-              this.tasks = new TaskList(storage.load());
-          } catch (IOException e) {
-              ui.showError(e.getMessage());
-              this.tasks = new TaskList();
-          }
+    public Mars(String filePath) throws IOException{
+        this.ui = new UI();
+        this.storage = new Storage(filePath);
+        this.tasks = new TaskList(storage.load());
     }
 
-    public void run() {
+
+
+    public String getResponse(String input) {
+        return "Mars heard: " + input;
+    }
+
+    public void run() throws IOException{
         ui.welcomeMessage();
         boolean isExit = false;
         while (!isExit) {
@@ -54,13 +55,16 @@ public class Mars {
                 isExit = c.isExit();
             } catch (marsException e) {
                 ui.showError(e.getMessage());
-            } finally {
+            }
+            finally {
                 ui.showLine();
             }
         }
     }
     public static void main(String[] args) {
-        new Mars("./../data/marsBot.txt").run();
+        try {
+            new Mars("src/main/data/marsBot.txt").run();
+        }
         /*
         try{
             ArrayList<Task> tasks = new ArrayList<>();
@@ -103,8 +107,9 @@ public class Mars {
                 }
 
             }
-        } catch (marsException e) {
-            System.out.println(e.getMessage());
         } */
+        catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

@@ -22,7 +22,7 @@ public abstract class Command {
     public abstract void execute(TaskList tasklist,UI ui, Storage storage);
 
     public boolean isExit(){
-        return true;
+        return false;
     }
 
 

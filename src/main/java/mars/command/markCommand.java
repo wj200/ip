@@ -15,10 +15,15 @@ public class markCommand extends Command {
     }
 
     public void execute(TaskList tasklist, UI ui, Storage storage) {
-        tasklist.mark(itemNumber - 1);
         Task task = tasklist.get(itemNumber - 1);
-        System.out.println("Nice! I've marked this task as done: ");
-        System.out.println(task);
-        System.out.println(HORIZONTAL_LINE);
+        if(task.getStatusIcon().equals("X")){
+            System.out.println("This task has already been marked.");
+        }
+        else{
+            tasklist.mark(itemNumber - 1);
+            System.out.println("Nice! I've marked this task as done: ");
+            System.out.println(task);
+            System.out.println(HORIZONTAL_LINE);
+        }
     }
 }

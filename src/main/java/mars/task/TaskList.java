@@ -12,8 +12,8 @@ import mars.marsException;
  * provides add, delete, mark, and unmark operations
  */
 public class TaskList {
-    static final DateTimeFormatter YEAR_MONTH_DAY = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-    static final DateTimeFormatter MONTH_DAY_YEAR = DateTimeFormatter.ofPattern("MMM dd yyyy, HH:mm");
+    static final DateTimeFormatter YEAR_MONTH_DAY = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"); // output: 2025-02-22 1430
+    static final DateTimeFormatter MONTH_DAY_YEAR = DateTimeFormatter.ofPattern("MMM dd yyyy, h:mm a"); // output: Feb 22 2025, 2:30 PM
     private ArrayList<Task> tasks;
 
     /**
@@ -33,20 +33,22 @@ public class TaskList {
         try{
         for (String line : tasks) {
             String desc;
-            boolean isDone = (line.charAt(5) == 'X');
+            boolean isDone = (line.charAt(4) == 'X');
             if (line.charAt(1) == 'T') {
-                 desc = "todo " + line.substring(8);
-                 this.add(new Todo(desc, isDone));
+                /* unmarked task should follow format: [T][ ] run with an empty
+                space in between second box so that line.substring() can be standardised to index 7 */
+                desc = line.substring(7);
+                this.add(new Todo(desc, isDone));
             } else if (line.charAt(1) == 'D') {
-                String remaining_line = line.substring(8);
+                String remaining_line = line.substring(7);
                 String[] split_line = remaining_line.split(" \\(by: ");
                 String name = split_line[0];
                 String endDate = split_line[1].split("\\)")[0];
                 String formattedEndDate = LocalDateTime.parse(endDate, MONTH_DAY_YEAR).format(YEAR_MONTH_DAY);
-                desc= "deadline " + name + " by " + formattedEndDate;
+                desc= name + " by " + formattedEndDate;
                 this.add(new Deadline(desc, isDone));
             } else {
-                String remaining_line = line.substring(8);
+                String remaining_line = line.substring(7);
                 String[] split_line = remaining_line.split(" \\(from: ");
                 String name = split_line[0];
                 String[] dates = split_line[1].split(" to: ");
@@ -54,7 +56,7 @@ public class TaskList {
                 String formattedStartDate = LocalDateTime.parse(startDate, MONTH_DAY_YEAR).format(YEAR_MONTH_DAY);
                 String endDate = dates[1].split("\\)")[0];
                 String formattedEndDate = LocalDateTime.parse(endDate, MONTH_DAY_YEAR).format(YEAR_MONTH_DAY);
-                desc = "event " + name + " from " + formattedStartDate + " to " + formattedEndDate;
+                desc = name + " from " + formattedStartDate + " to " + formattedEndDate;
                 this.add(new Event(desc, isDone));
             }
         }

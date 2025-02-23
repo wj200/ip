@@ -13,12 +13,12 @@ public class TaskListMarkTest {
     @Test
     public void mark_success(){
         Task task = new Todo("run" , true);
-        String line = "[T][] run";
+        String line = "[T][ ] run";
         ArrayList<String> lst = new ArrayList<>();
         lst.add(line);
         TaskList taskList = new TaskList(lst);
         taskList.mark(0);
-        Task markedTask = new TaskList(lst).get(0);
+        Task markedTask = taskList.get(0);
         assertEquals(task.toString(), markedTask.toString());
     }
 }

@@ -19,7 +19,7 @@ import java.time.format.DateTimeFormatter;
 public class addCommand extends Command {
     private static final String HORIZONTAL_LINE = "____________________________________________________________\n";
     static final DateTimeFormatter YEAR_MONTH_DAY = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-    static final DateTimeFormatter MONTH_DAY_YEAR = DateTimeFormatter.ofPattern("MMM dd yyyy, HH:mm");
+    static final DateTimeFormatter MONTH_DAY_YEAR = DateTimeFormatter.ofPattern("MMM dd yyyy, h:mm a");
 
     private String taskType;
     private String details;
@@ -43,7 +43,6 @@ public class addCommand extends Command {
                     Todo todo =  new Todo(parts[1], false);
                     tasklist.add(todo);
                     System.out.println("Got it. I've added this task: \n" + todo);
-                    tasklist.add(new Todo(parts[1], false));
                 }
                 break;
             case "deadline" :
@@ -66,32 +65,36 @@ public class addCommand extends Command {
                     throw new marsException("OOPS!!! The description of a " + taskType + " cannot be empty\n " + HORIZONTAL_LINE);
                 }
                 else {
-                    String[] event = parts[1].split("from: | to:", 3);
-                    if (event[0].isEmpty() || event[1].isEmpty() || event[2].isEmpty()){
+                    String[] desc = parts[1].split("\\(from: ", 2);
+                    String event = desc[0];
+                    String[] dates = desc[1].split(" to: ", 2);
+                    String startDate = dates[0];
+                    String endDate = dates[1].split("\\)")[0];
+
+                    if (startDate.isEmpty() || endDate.isEmpty()){
                         throw new marsException("Invalid or empty description of a " + taskType + "\n" +HORIZONTAL_LINE);
                     }
                     else {
-                        String startDate = event[1];
                         String formattedStartDate = LocalDateTime.parse(startDate, MONTH_DAY_YEAR).format(YEAR_MONTH_DAY);
-                        String endDate = event[2].split("\\)")[0];
                         String formattedEndDate = LocalDateTime.parse(endDate, MONTH_DAY_YEAR).format(YEAR_MONTH_DAY);
-                        String eventDesc = event[0] + "from: " + formattedStartDate + " to: " + formattedEndDate;
-                        System.out.println("Got it. I've added this task: \n");
-                        tasklist.add(new Event(eventDesc, false));
+                        String eventDesc = event + "from: " + formattedStartDate + " to: " + formattedEndDate;
+                        Event eventTask = new Event(eventDesc, false);
+                        tasklist.add(eventTask);
+                        System.out.println("Got it. I've added this task: \n" + eventTask);
                     }
                 }
                 break;
             default: throw new marsException("OOPS!!! I'm sorry, but I don't know what that means :-(\n" + HORIZONTAL_LINE);
         }
-        System.out.println(tasklist.getLast());
+
 
         if(tasklist.size() == 1){
-            System.out.println("  Now you have 1 task in the list.\n");
+            System.out.println("Now you have 1 task in the list.\n");
         }
         else{
-            System.out.println("  Now you have " + tasklist.size() + " tasks in the list.\n");
+            System.out.println("Now you have " + tasklist.size() + " tasks in the list.\n");
         }
-        System.out.println(HORIZONTAL_LINE);
+        ui.showLine();
 
     }
 }
