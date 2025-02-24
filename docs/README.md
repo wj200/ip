@@ -6,11 +6,11 @@ Introducing *MARS*! A personal tasklist chatbot to help you better organise your
 
 Ever get overwhelmed with Deadlines, Events, ToDos, and DoWithins? Here is an assistant with a minimalist UI for you!
 
-# Here are the types of Tasks available:
-> Todo
-> Deadline
-> Event
-> Do Within
+## Here are the types of Tasks available:
+* Todo
+* Deadline
+* Event
+* Do Within
 
 ## Adding deadlines
 
