@@ -57,12 +57,13 @@ public class UI {
 
     public String userGuide() {
         String guide = "QUICK GUIDE TO MARS:\n"
-                + "\nTo add a ToDo:\n   'todo {task name}'"
-                + "\nTo add a Deadline:\n   'deadline {task name} (by: MMM dd yyyy, h:mm a'"
-                + "\nTo add an Event:\n   'event {task name} (from: MMM dd yyyy, h:mm a to MMM dd yyyy, h:mm a'\n"
-                + "\nTo add an DoWithin:\n 'do within {task name} between: MMM dd yyyy, h:mm a and MMM dd yyyy, h:mm a'";
+                + "\nTo add a ToDo:\n   'todo {task name}\n'"
+                + "\nTo add a Deadline:\n   'deadline {task name} (by: MMM dd yyyy, h:mm a)\n'"
+                + "\nTo add an Event:\n   'event {task name} (from: MMM dd yyyy, h:mm a to MMM dd yyyy, h:mm a)'\n"
+                + "\nTo add an DoWithin:\n 'do within {task name} between: MMM dd yyyy, h:mm a and MMM dd yyyy, h:mm a'\n";
 
         String userCommands = "\nOTHER USER COMMANDS:\n"
+                +"\n *** any other commands constitutes as an echo ***\n"
                 + "\n1. list  <This shows the list of ACTIVE tasks>"
                 + "\n2. delete  {task number}"
                 + "\n3. mark  {task number}"
