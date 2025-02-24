@@ -72,9 +72,12 @@ Format: unmark {task number}
 ### List
 Format: list 
 *e.g. list*
-> OK, I've marked this task as not done yet: [T][] read book 
-
+> Here are the tasks in your list:
+> [T][] read book
+> [DW][ ] collect certificate between: 2024-01-15 18:00 and 2024-01-25 18:00  
 
 ### Find
 Format: find {keyword} 
 *eg. find book*
+> Here are the matching tasks in your list:
+> [T][] read book
