@@ -4,12 +4,18 @@ Introducing *MARS*! A personal tasklist chatbot to help you better organise your
 
 ![UI Image](../src/main/docs/Ui.png)
 
-Ever get overwhelmed with Deadlines, Events, ToDos, and DoWithins? Here is an assistant with a minimalist UI for you!
+Ever get overwhelmed with Deadlines, Events, ToDos, and DoWithins? 
+Here is an assistant with a minimalist UI for you! 😄
+
+# Sneak Peek
+[X] Adding Deadlines
+[X] Marking Tasks
+[ ] Reminders *coming soon*
 
 ## Get started
-Download the .jar file of your desired version.
-Double-click and open file.
-The application is ready for use! Start adding tasks and performing other actions.
+Download the .jar file of your desired version.  
+Double-click and open file.  
+The application is ready for use! Start adding tasks and performing other actions.  
 
 ## Here are the types of Tasks available:
 * Todo
