@@ -24,7 +24,7 @@ public class addCommand extends Command {
         this.details = details;
     }
 
-    public void execute(TaskList tasklist, UI ui, Storage storage){
+    public void execute(TaskList tasklist, UI ui, Storage storage) throws marsException{
         String taskType = this.taskType;
         String details = this.details;
         String[] parts;

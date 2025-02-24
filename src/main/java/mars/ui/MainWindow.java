@@ -56,6 +56,11 @@ public class MainWindow extends AnchorPane {
     }
 
     public void displayWelcomeMessage() {
-
+        String userGuide = mars.getUserGuide();
+        String welcomeMessage = mars.getWelcomeMessage();
+        dialogContainer.getChildren().addAll(
+                DialogBox.getUserDialog(userGuide, userImage),
+                DialogBox.getMarsDialog(welcomeMessage, marsImage)
+        );
     }
 }

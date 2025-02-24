@@ -7,12 +7,12 @@ import mars.ui.UI;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import javafx.application.Platform;
 
 public class byeCommand extends Command {
-    private static final String HORIZONTAL_LINE = "____________________________________________________________\n";
-
     public void execute(TaskList tasks, UI ui, Storage storage){
-        System.out.println("Bye. Hope to see you again soon!\n" + HORIZONTAL_LINE);
+        System.out.println("Bye. Hope to see you again soon!\n");
+        Platform.exit();
     }
 
     @Override

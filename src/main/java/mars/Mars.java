@@ -14,6 +14,7 @@ import mars.task.TaskList;
 import mars.parser.Parser;
 import mars.command.Command;
 
+
 import mars.ui.UI;
 
 /**
@@ -38,78 +39,24 @@ public class Mars {
     }
 
 
-
     public String getResponse(String input) {
-        return "Mars heard: " + input;
-    }
-
-    public void run() throws IOException{
-        ui.welcomeMessage();
-        boolean isExit = false;
-        while (!isExit) {
-            try {
-                String fullCommand = ui.readCommand();
-                ui.showLine();
-                Command c = Parser.parse(fullCommand);
-                c.execute(tasks, ui, storage);
-                isExit = c.isExit();
-            } catch (marsException e) {
-                ui.showError(e.getMessage());
-            }
-            finally {
-                ui.showLine();
-            }
-        }
-    }
-    public static void main(String[] args) {
+        assert input != null: "input must not be null";
         try {
-            new Mars("src/main/data/marsBot.txt").run();
-        }
-        /*
-        try{
-            ArrayList<Task> tasks = new ArrayList<>();
-            Mars mars = new Mars("./data/marsBot.txt" );
-            mars.ui.welcomeMessage();
-            while (true){
-                Scanner reader = new Scanner(System.in);
-                String command = reader.nextLine();
-                if (command.equals("echo")){
-                    Mars.echo();
-                }
-                else if (command.equals("bye")){
-                    mars.ui.goodbyeMessage();
-                }
-                else if (command.equals("list")){
-                    Mars.list(tasks);
-                }
-                else if(command.startsWith("mark")){
-                    int index = Integer.parseInt(command.split(" ")[1]);
-                    Task task = tasks.get(index-1);
-                    task.markAsDone();
-                    Mars.mark(task);
-                }
-                else if (command.startsWith("unmark")){
-                    int index = Integer.parseInt(command.split(" ")[1]);
-                    Task task = tasks.get(index-1);
-                    task.unmark();
-                    Mars.unmark(task);
-                }
-                else if (command.startsWith("todo") || command.startsWith("deadline") ||command.startsWith("event") ){
-                    mars.addTask(tasks);
-                    mars.storage.save(tasks);
-                }
-                else if(command.startsWith("delete")){
-                    mars.deleteTask(tasks);
-                    mars.storage.save(tasks);
-                }
-                else {
-                    throw new IllegalArgumentException("Unknown command: " + command);
-                }
-
-            }
-        } */
-        catch (IOException e) {
-            System.out.println(e.getMessage());
+            Command c = Parser.parse(input);
+            assert c != null : "Command cannot not be null.";
+            c.execute(tasks, ui, storage);
+            return ui.getResponse();
+        } catch (marsException e) {
+                return e.getMessage();
         }
     }
+
+    public String getUserGuide() {
+        return ui.userGuide();
+    }
+
+    public String getWelcomeMessage() {
+        return ui.welcomeMessage();
+    }
+
 }

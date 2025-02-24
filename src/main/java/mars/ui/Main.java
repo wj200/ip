@@ -16,13 +16,12 @@ import mars.Mars;
  * and demonstrate 3how FXML files and matching Java files can still refer each other's elements.
  */
 public class Main extends Application {
-
     private Mars mars;
 
     @Override
     public void start(Stage stage) {
         try {
-            mars = new Mars("src/main/data/marsBot.txt");
+            mars = new Mars("src/main/resources/marsBot.txt");
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/MainWindow.fxml"));
             AnchorPane ap = fxmlLoader.load(); // interact with the AnchorPane defined in the FXML as we would have if we created the AnchorPane ourselves inside the Main class.
             Scene scene = new Scene(ap);
