@@ -6,6 +6,7 @@ import mars.task.TaskList;
 import mars.ui.UI;
 import javafx.application.Platform;
 
+
 public class byeCommand extends Command {
     public void execute(TaskList tasks, UI ui, Storage storage){
         String message = "Bye. Hope to see you again soon!\n";
