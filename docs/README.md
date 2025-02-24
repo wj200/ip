@@ -13,38 +13,38 @@ Ever get overwhelmed with Deadlines, Events, ToDos, and DoWithins? Here is an as
 * Do Within *a certain time period*
 
 ## To add a Todo:
-format: todo {task name}  
+format: todo  {task name}  
 *Example usage: todo read book*
 
 ## To add a deadline:
-format: deadline {task name} (by: MMM dd yyyy, h:mm a)  
+format: deadline  {task name}  (by: MMM dd yyyy, h:mm a)  
 *Example usage: deadline return book (by: Feb 02 2024, 6:00 pm)*
 
 ## To add an Event:
-format: event {task name} (from: MMM dd yyyy, h:mm a to MMM dd yyyy, h:mm a)  
+format: event  {task name}  (from: MMM dd yyyy, h:mm a to MMM dd yyyy, h:mm a)  
 *Example usage: event CS2103T project meeting (from: Feb 28 2024, 6:00 am to: Mar 03 2024, 8:00 am)*
 
 ## To add a DoWithin, run:
-format: do within {task name} between: MMM dd yyyy, h:mm a and MMM dd yyyy, h:mm a  
+format: do within  {task name}  between: MMM dd yyyy, h:mm a and MMM dd yyyy, h:mm a  
 *Example usage: collect certificate between: Jan 15 2024, 6:00 pm and Jan 25 2024, 6:00 pm*
 
 ## If tasks are added successfully, the output would be:
 
-> Got it. I've added this task:
-> [T][ ] read book
-> Now you have 1 task in the list
+> Got it. I've added this task:  
+> [T][ ] read book  
+> Now you have 1 task in the list  
 
-> Got it. I've added this task:
-> [D][ ] deadline return book by 2024-02-02 18:00
-> Now you have 2 tasks in the list
+> Got it. I've added this task:  
+> [D][ ] deadline return book by 2024-02-02 18:00  
+> Now you have 2 tasks in the list  
 
-> Got it. I've added this task:
-> [E][ ] CS2103T project meeting from: 2024-02-28 06:00 to 2024-03-03 08:00
-> Now you have 3 tasks in the list
+> Got it. I've added this task:  
+> [E][ ] CS2103T project meeting from: 2024-02-28 06:00 to 2024-03-03 08:00  
+> Now you have 3 tasks in the list  
 
-> Got it. I've added this task:
-> [DW][ ] collect certificate between: 2024-01-15 18:00 and 2024-01-25 18:00
-> Now you have 4 tasks in the list
+> Got it. I've added this task:  
+> [DW][ ] collect certificate between: 2024-01-15 18:00 and 2024-01-25 18:00  
+> Now you have 4 tasks in the list  
 
 ## Feature ABC
 
