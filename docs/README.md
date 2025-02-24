@@ -4,12 +4,12 @@ Introducing *MARS*! A personal tasklist chatbot to help you better organise your
 
 ![UI Image](../src/main/docs/Ui.png)
 
-Ever get overwhelmed with Deadlines, Events, ToDos, and DoWithins? 
+Ever get overwhelmed with Deadlines, Events, ToDos, and DoWithins?   
 Here is an assistant with a minimalist UI for you! 😄
 
 # Sneak Peek
-[X] Adding Deadlines
-[X] Marking Tasks
+[X] Adding Deadlines  
+[X] Marking Tasks  
 [ ] Reminders *coming soon*
 
 ## Get started
