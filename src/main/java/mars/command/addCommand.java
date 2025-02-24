@@ -43,12 +43,12 @@ public class addCommand extends Command {
                 }
                 break;
             case "deadline":
-                parts = details.split(" \\(by: ", 2);
+                parts = details.split("\\(by: ", 2);
                 if (parts[1].isEmpty()){
                     throw new marsException("Invalid or empty description of a " + taskType + "\n");
                 }
                 else {
-                    String endDate = parts[1];
+                    String endDate = parts[1].split("\\)", 2)[0];
                     String formattedEndDate = LocalDateTime.parse(endDate, MONTH_DAY_YEAR).format(YEAR_MONTH_DAY);
                     String deadlineDesc = parts[0] + " by " + formattedEndDate;
                     Deadline deadline = new Deadline(deadlineDesc, false);
