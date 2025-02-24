@@ -1,8 +1,9 @@
-# mars.Mars User Guide
+# Mars User Guide
 
-// Update the title above to match the actual product name
+Introducing *MARS*! A personal tasklist chatbot to help you better organise your day
 
-// Product screenshot goes here
+![Local Image](./path/to/image.png)
+
 
 // Product intro goes here
 
