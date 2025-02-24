@@ -10,21 +10,41 @@ Ever get overwhelmed with Deadlines, Events, ToDos, and DoWithins? Here is an as
 * Todo
 * Deadline
 * Event
-* Do Within
+* Do Within *a certain time period*
 
-## Adding deadlines
+## To add a Todo
+format: > todo {task name}
+*Example usage: > todo read book*
 
-// Describe the action and its outcome.
+## To add a deadline, run:
+format: > deadline {task name} (by: MMM dd yyyy, h:mm a)
+*Example usage: > deadline return book (by: Feb 02 2024, 6:00 pm)*
 
-// Give examples of usage
+## To add an Event, run:
+format: > event {task name} (from: MMM dd yyyy, h:mm a to MMM dd yyyy, h:mm a)
+*Example usage: > event CS2103T project meeting (from: Feb 28 2024, 6:00 am to: Mar 03 2024, 8:00 am)*
 
-Example: `keyword (optional arguments)`
+## To add a DoWithin, run:
+format: > do within {task name} between: MMM dd yyyy, h:mm a and MMM dd yyyy, h:mm a
+*Example usage: collect certificate between: Jan 15 2024, 6:00 pm and Jan 25 2024, 6:00 pm*
 
-// A description of the expected outcome goes here
+## If tasks are added successfully, the output would be:
 
-```
-expected output
-```
+> Got it. I've added this task:
+> [T][ ] read book
+> Now you have 1 task in the list
+
+> Got it. I've added this task:
+> [D][ ] deadline return book by 2024-02-02 18:00
+> Now you have 2 tasks in the list
+
+> Got it. I've added this task:
+> [E][ ] CS2103T project meeting from: 2024-02-28 06:00 to 2024-03-03 08:00
+> Now you have 3 tasks in the list
+
+> Got it. I've added this task:
+> [DW][ ] collect certificate between: 2024-01-15 18:00 and 2024-01-25 18:00
+> Now you have 4 tasks in the list
 
 ## Feature ABC
 
