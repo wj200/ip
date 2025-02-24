@@ -2,7 +2,7 @@
 
 Introducing *MARS*! A personal tasklist chatbot to help you better organise your day
 
-![Local Image](./path/to/image.png)
+![Local Image](./docs/Ui.png)
 
 
 // Product intro goes here
