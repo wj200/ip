@@ -76,7 +76,7 @@ Format: list
 > [T][ ] read book  
 > [DW][ ] collect certificate between: 2024-01-15 18:00 and 2024-01-25 18:00    
 
-### Find
+### Find a task through keyword
 Format: find {keyword} 
 *eg. find book*
 > Here are the matching tasks in your list:  
