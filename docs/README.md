@@ -56,28 +56,28 @@ format: do within  {task name}  between: MMM dd yyyy, h:mm a and MMM dd yyyy, h:
 ### Deleting a task
 Format: delete {task number} 
 *eg. delete 1*
-> Noted. I have removed this task [T][] read book
+> Noted. I have removed this task [T][] read book  
 > Now you have 3 tasks in the list
 
 ### Marking a task
 Format: mark {task number} 
 *eg. mark 1*
-> Nice! I've marked this task as done: [T][X] read book 
+> Nice! I've marked this task as done: [T][X] read book   
 
 ### Unmarking a task
 Format: unmark {task number} 
 *eg. unmark 1*
-> OK, I've marked this task as not done yet: [T][] read book 
+> OK, I've marked this task as not done yet: [T][] read book    
 
 ### List
 Format: list 
 *e.g. list*
-> Here are the tasks in your list:
-> [T][] read book
-> [DW][ ] collect certificate between: 2024-01-15 18:00 and 2024-01-25 18:00  
+> Here are the tasks in your list:  
+> [T][] read book  
+> [DW][ ] collect certificate between: 2024-01-15 18:00 and 2024-01-25 18:00    
 
 ### Find
 Format: find {keyword} 
 *eg. find book*
-> Here are the matching tasks in your list:
-> [T][] read book
+> Here are the matching tasks in your list:  
+> [T][] read book  
