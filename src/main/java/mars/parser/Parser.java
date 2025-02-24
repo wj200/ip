@@ -1,7 +1,14 @@
 package mars.parser;
 
-import mars.command.*;
-import mars.marsException;
+import mars.command.Command;
+import mars.command.addCommand;
+import mars.command.deleteCommand;
+import mars.command.listCommand;
+import mars.command.markCommand;
+import mars.command.unmarkCommand;
+import mars.command.byeCommand;
+import mars.command.findCommand;
+import mars.command.echoCommand;
 
 /**
  * Parser class deals with making sense of the user command
@@ -31,6 +38,10 @@ public class Parser {
             case "deadline":
                 return new addCommand(commandWord,userInput);
             case "event":
+                return new addCommand(commandWord,userInput);
+            case "do":
+                String[] secondPart = parts[1].split(" ", 2);
+                commandWord = parts[0] + " " + secondPart[0];
                 return new addCommand(commandWord,userInput);
             case "delete":
                 index = Integer.valueOf(parts[1]);

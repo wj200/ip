@@ -45,16 +45,13 @@ public class findCommand extends Command{
             }
         }
         if(matches.isEmpty()){
-            ui.showLine();
-            System.out.println("There are no matching tasks in your list:\n");
-            ui.showLine();
+            ui.setResponse("There are no matching tasks in your list:\n");
         } else{
-            ui.showLine();
-            System.out.println("Here are the matching tasks in your list:\n");
+            StringBuilder message = new StringBuilder("Here are the matching tasks in your list:\n");
             for (int i=0; i<matches.size(); i++){
-                System.out.println(matches.get(i).toString());
+                message.append(matches.get(i).toString()).append("\n");
             }
-            ui.showLine();
+            ui.setResponse(message.toString());
         }
     }
 

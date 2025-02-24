@@ -1,14 +1,17 @@
 package mars.command;
 
 import mars.storage.Storage;
+
 import mars.task.TaskList;
 import mars.ui.UI;
+import javafx.application.Platform;
+
 
 public class byeCommand extends Command {
-    private static final String HORIZONTAL_LINE = "____________________________________________________________\n";
-
     public void execute(TaskList tasks, UI ui, Storage storage){
-        System.out.println("Bye. Hope to see you again soon!\n" + HORIZONTAL_LINE);
+        String message = "Bye. Hope to see you again soon!\n";
+        ui.setResponse(message);
+        Platform.exit();
     }
 
     @Override
