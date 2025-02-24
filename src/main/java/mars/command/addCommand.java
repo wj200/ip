@@ -28,6 +28,7 @@ public class addCommand extends Command {
         String taskType = this.taskType;
         String details = this.details;
         String[] parts;
+        String message = "";
 
         switch(taskType){
             case "todo":
@@ -38,7 +39,7 @@ public class addCommand extends Command {
                 else {
                     Todo todo =  new Todo(parts[1], false);
                     tasklist.add(todo);
-                    System.out.println("Got it. I've added this task: \n" + todo);
+                    message = "Got it. I've added this task: \n" + todo
                 }
                 break;
             case "deadline":
@@ -52,7 +53,7 @@ public class addCommand extends Command {
                     String deadlineDesc = parts[0] + " by " + formattedEndDate;
                     Deadline deadline = new Deadline(deadlineDesc, false);
                     tasklist.add(deadline);
-                    System.out.println("Got it. I've added this task: \n" + deadline);
+                    message = "Got it. I've added this task: \n" + deadline;
                 }
                 break;
             case "event" :
@@ -76,7 +77,7 @@ public class addCommand extends Command {
                         String eventDesc = event + "from: " + formattedStartDate + " to: " + formattedEndDate;
                         Event eventTask = new Event(eventDesc, false);
                         tasklist.add(eventTask);
-                        System.out.println("Got it. I've added this task: \n" + eventTask);
+                        message = "Got it. I've added this task: \n" + eventTask;
                     }
                 }
                 break;
@@ -91,19 +92,20 @@ public class addCommand extends Command {
                  String eventDesc = event + " between: " + formattedStartDate + " and " + formattedEndDate;
                  DoWithin doWithinTask = new DoWithin(eventDesc, false);
                  tasklist.add(doWithinTask);
-                 System.out.println("Got it. I've added this task: \n" + doWithinTask);
+                 message = "Got it. I've added this task: \n" + doWithinTask;
 
             default: throw new marsException("OOPS!!! I'm sorry, but I don't know what that means :-(\n" + HORIZONTAL_LINE);
         }
 
 
         if(tasklist.size() == 1){
-            System.out.println("Now you have 1 task in the list.\n");
+            message += "Now you have 1 task in the list.\n" + HORIZONTAL_LINE;
+            ui.setResponse(message);
         }
         else{
-            System.out.println("Now you have " + tasklist.size() + " tasks in the list.\n");
+            message += "Now you have " + tasklist.size() + " tasks in the list.\n" + HORIZONTAL_LINE;
+            ui.setResponse(message);
         }
-        ui.showLine();
 
     }
 }

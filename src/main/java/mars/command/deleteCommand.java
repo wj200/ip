@@ -22,9 +22,11 @@ public class deleteCommand extends Command{
     public void execute(TaskList tasklist, UI ui, Storage storage){
         Task task = tasklist.get(itemNumber - 1);
         assert task != null : "Task cannot be null.";
-        System.out.println("Noted. I've removed this task: " + task.toString());
+
+        String firstMessage = "Noted. I've removed this task: " + task.toString();
         tasklist.delete(itemNumber -1);
-        System.out.println("Now you have " + tasklist.size() + " tasks in the list.\n" + HORIZONTAL_LINE);
+        String secondMessage = "Now you have " + tasklist.size() + " tasks in the list.\n" + HORIZONTAL_LINE;
+        ui.setResponse(firstMessage + secondMessage);
     }
 
 }

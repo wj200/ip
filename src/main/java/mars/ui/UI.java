@@ -5,7 +5,7 @@ import java.util.Scanner;
  * The UI class handles all interactions with user, displaying messages and reading user input
  */
 public class UI {
-    private final Scanner sc;
+    private final Scanner sc;  // deprecated
     private static final String HORIZONTAL_LINE = "____________________________________________________________\n";
     private String latestResponse;
 
@@ -23,9 +23,11 @@ public class UI {
                    +  HORIZONTAL_LINE;
         }
 
+        // deprecated
         public void showLine(){
             System.out.println(HORIZONTAL_LINE);
         }
+
 
         /**
          * Displays a given error message.
@@ -36,16 +38,17 @@ public class UI {
                 System.out.println(message);
             }
 
+            // deprecated
             /**
              * Reads in command from the user.
              *
              * @return command entered by the user as a string.
              */
-
             public String readCommand() {
                 return sc.nextLine();
             }
 
+            // deprecated
             /**
              * Closes scanner object
              */
@@ -77,9 +80,11 @@ public class UI {
         System.out.println(HORIZONTAL_LINE);
     }
 
+    // getter
     public String getResponse(){ return latestResponse;}
 
-
+    // setter
+    public void setResponse (String message){ latestResponse = message;}
 
 }
 

@@ -47,7 +47,7 @@ public class Mars {
             c.execute(tasks, ui, storage);
             return ui.getResponse();
         } catch (marsException e) {
-                return e.getMessage();
+            return e.getMessage();
         }
     }
 
