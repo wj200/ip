@@ -47,7 +47,7 @@ public class findCommand extends Command{
         if(matches.isEmpty()){
             ui.setResponse("There are no matching tasks in your list:\n");
         } else{
-            StringBuilder message = new StringBuilder("Here are the matching tasks in your list:\n")
+            StringBuilder message = new StringBuilder("Here are the matching tasks in your list:\n");
             for (int i=0; i<matches.size(); i++){
                 message.append(matches.get(i).toString());
             }

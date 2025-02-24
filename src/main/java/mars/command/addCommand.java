@@ -19,6 +19,7 @@ public class addCommand extends Command {
 
     private String taskType;
     private String details;
+
     public addCommand(String taskType ,String details){
         this.taskType = taskType;
         this.details = details;
@@ -29,7 +30,6 @@ public class addCommand extends Command {
         String details = this.details;
         String[] parts;
         String message = "";
-
         switch(taskType){
             case "todo":
                 parts = details.split(" ", 2);
@@ -39,7 +39,7 @@ public class addCommand extends Command {
                 else {
                     Todo todo =  new Todo(parts[1], false);
                     tasklist.add(todo);
-                    message = "Got it. I've added this task: \n" + todo
+                    message = "Got it. I've added this task: \n" + todo;
                 }
                 break;
             case "deadline":
@@ -93,10 +93,9 @@ public class addCommand extends Command {
                  DoWithin doWithinTask = new DoWithin(eventDesc, false);
                  tasklist.add(doWithinTask);
                  message = "Got it. I've added this task: \n" + doWithinTask;
-
+                 break;
             default: throw new marsException("OOPS!!! I'm sorry, but I don't know what that means :-(\n" + HORIZONTAL_LINE);
         }
-
 
         if(tasklist.size() == 1){
             message += "Now you have 1 task in the list.\n" + HORIZONTAL_LINE;

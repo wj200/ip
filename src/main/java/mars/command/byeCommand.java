@@ -11,7 +11,7 @@ import javafx.application.Platform;
 
 public class byeCommand extends Command {
     public void execute(TaskList tasks, UI ui, Storage storage){
-        String message = "Bye. Hope to see you again soon!\n"
+        String message = "Bye. Hope to see you again soon!\n";
         ui.setResponse(message);
         Platform.exit();
     }
