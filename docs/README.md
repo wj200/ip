@@ -8,9 +8,9 @@ Ever get overwhelmed with Deadlines, Events, ToDos, and DoWithins?
 Here is an assistant with a minimalist UI for you! 😄
 
 # Sneak Peek
-[X] Adding Deadlines  
-[X] Marking Tasks  
-[ ] Reminders *coming soon*
+-[X] Adding Deadlines  
+-[X] Marking Tasks  
+-[ ] Reminders *coming soon*
 
 ## Get started
 Download the .jar file of your desired version.  
