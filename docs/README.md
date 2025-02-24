@@ -13,19 +13,19 @@ Ever get overwhelmed with Deadlines, Events, ToDos, and DoWithins? Here is an as
 * Do Within *a certain time period*
 
 ## To add a Todo:
-format: todo {task name}
+format: todo {task name}  
 *Example usage: todo read book*
 
 ## To add a deadline:
-format: deadline {task name} (by: MMM dd yyyy, h:mm a)
+format: deadline {task name} (by: MMM dd yyyy, h:mm a)  
 *Example usage: deadline return book (by: Feb 02 2024, 6:00 pm)*
 
 ## To add an Event:
-format: event {task name} (from: MMM dd yyyy, h:mm a to MMM dd yyyy, h:mm a)
+format: event {task name} (from: MMM dd yyyy, h:mm a to MMM dd yyyy, h:mm a)  
 *Example usage: event CS2103T project meeting (from: Feb 28 2024, 6:00 am to: Mar 03 2024, 8:00 am)*
 
 ## To add a DoWithin, run:
-format: do within {task name} between: MMM dd yyyy, h:mm a and MMM dd yyyy, h:mm a
+format: do within {task name} between: MMM dd yyyy, h:mm a and MMM dd yyyy, h:mm a  
 *Example usage: collect certificate between: Jan 15 2024, 6:00 pm and Jan 25 2024, 6:00 pm*
 
 ## If tasks are added successfully, the output would be:
