@@ -19,8 +19,7 @@ public class UI {
          * Displays the welcome message when the application starts.
          */
         public String welcomeMessage() {
-            return HORIZONTAL_LINE + "Hello! I'm Mars, your personalised TaskList Assistant\n" + "Please enter a User Command\n"
-                   +  HORIZONTAL_LINE;
+            return "Hello! I'm Mars, your personalised TaskList Assistant\n" + "Please enter a User Command\n";
         }
 
         // deprecated
@@ -75,9 +74,7 @@ public class UI {
     }
 
     public void goodbyeMessage() {
-        System.out.println(HORIZONTAL_LINE);
         System.out.println("Bye. Hope to see you again soon!\n");
-        System.out.println(HORIZONTAL_LINE);
     }
 
     // getter

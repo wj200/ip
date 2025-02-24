@@ -25,7 +25,7 @@ public class deleteCommand extends Command{
 
         String firstMessage = "Noted. I've removed this task: " + task.toString();
         tasklist.delete(itemNumber -1);
-        String secondMessage = "Now you have " + tasklist.size() + " tasks in the list.\n" + HORIZONTAL_LINE;
+        String secondMessage = "\nNow you have " + tasklist.size() + " tasks in the list.\n";
         ui.setResponse(firstMessage + secondMessage);
     }
 

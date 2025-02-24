@@ -18,11 +18,11 @@ public class markCommand extends Command {
         Task task = tasklist.get(itemNumber - 1);
         assert task != null : "Task cannot be null.";
         if(task.getStatusIcon().equals("X")){
-            ui.setResponse("This task has already been marked.");
+            ui.setResponse("This task has already been marked.\n");
         }
         else{
             tasklist.mark(itemNumber - 1);
-            String message = "Nice! I've marked this task as done: " + task;
+            String message = "Nice! I've marked this task as done: " + task +"\n";
             ui.setResponse(message);
         }
     }

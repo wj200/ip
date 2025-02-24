@@ -14,7 +14,7 @@ public class echoCommand extends Command{
     }
 
     public void execute(TaskList tasks, UI ui, Storage storage){
-        ui.setResponse(this.echo + "\n" + HORIZONTAL_LINE);
+        ui.setResponse(this.echo + "\n");
     }
 
 }

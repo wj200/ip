@@ -21,10 +21,10 @@ public class unmarkCommand extends Command{
         assert task != null : "Task cannot be null.";
         if(task.getStatusIcon().equals("X")){
             tasklist.unmark(itemNumber -1);
-            String message = "OK, I've marked this task as not done yet: " + task;
+            String message = "OK, I've marked this task as not done yet: " + task + "\n";
             ui.setResponse(message);
         } else{
-            ui.setResponse("This task was already unmarked.");
+            ui.setResponse("This task was already unmarked.\n");
         }
     }
 

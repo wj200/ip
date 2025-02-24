@@ -13,7 +13,7 @@ public class listCommand extends Command{
     public void execute(TaskList tasklist, UI ui, Storage storage){
         StringBuilder message = new StringBuilder("Here are the tasks in your list:\n");
         for (Task task : tasklist.getTasks()) {
-            message.append(task.toString());
+            message.append(task.toString()).append("\n");
         }
         ui.setResponse(message.toString());
     }

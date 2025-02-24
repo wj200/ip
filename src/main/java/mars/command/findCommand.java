@@ -49,7 +49,7 @@ public class findCommand extends Command{
         } else{
             StringBuilder message = new StringBuilder("Here are the matching tasks in your list:\n");
             for (int i=0; i<matches.size(); i++){
-                message.append(matches.get(i).toString());
+                message.append(matches.get(i).toString()).append("\n");
             }
             ui.setResponse(message.toString());
         }

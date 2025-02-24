@@ -21,7 +21,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
         try {
-            mars = new Mars("src/main/resources/marsBot.txt");
+            mars = new Mars("src/main/data/marsBot.txt");
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/MainWindow.fxml"));
             AnchorPane ap = fxmlLoader.load(); // interact with the AnchorPane defined in the FXML as we would have if we created the AnchorPane ourselves inside the Main class.
             Scene scene = new Scene(ap);
