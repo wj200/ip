@@ -1,11 +1,8 @@
 package mars.command;
 
-import mars.Mars;
 import mars.marsException;
 import mars.task.*;
 
-import java.util.ArrayList;
-import java.util.Scanner;
 
 import mars.ui.UI;
 import mars.storage.Storage;

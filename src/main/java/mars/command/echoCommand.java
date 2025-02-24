@@ -1,6 +1,5 @@
 package mars.command;
 
-import java.util.Scanner;
 import mars.task.TaskList;
 import mars.ui.UI;
 import mars.storage.Storage;

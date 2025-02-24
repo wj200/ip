@@ -2,9 +2,6 @@ package mars.command;
 
 import mars.task.Task;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-
 import mars.task.TaskList;
 import mars.ui.UI;
 import mars.storage.Storage;
