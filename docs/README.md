@@ -2,7 +2,7 @@
 
 Introducing *MARS*! A personal tasklist chatbot to help you better organise your day
 
-![UI Image](../src/main/docs/Ui.png)
+![UI Image](docs/Ui.png)
 
 Ever get overwhelmed with Deadlines, Events, ToDos, and DoWithins?   
 Here is an assistant with a minimalist UI for you! 😄
