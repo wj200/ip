@@ -39,20 +39,24 @@ public class Storage {
             this.scanner = new Scanner(file);
             System.out.println("File was not found initially. New empty file created.\n");
         }*/
-        this.file = new File(filePath);
-        this.filePath = filePath;
-        if (!file.exists()) {
-            if (file.createNewFile()) {
-                System.out.println("File was not found initially. New empty file created.\n");
-            } else {
-                throw new IOException("Failed to create new file: " + filePath);
-            }
-        }
 
         try {
+            // Ensure the parent directory exists
+            File parentDir = new File("data");
+            if (!parentDir.exists()) {
+                parentDir.mkdirs();
+            }
+            this.file = new File( parentDir.getPath() + "/"+ filePath);
+            if (!file.exists()) {
+                if (file.createNewFile()) {
+                    System.out.println("File was not found initially. New empty file created.\n");
+                } else {
+                    throw new IOException("Failed to create new file: " + filePath);
+                }
+            }
             this.scanner = new Scanner(file);
-        } catch (FileNotFoundException e) {
-            throw new IOException("Unexpected error: File should exist but cannot be read.", e);
+        } catch (IOException e) {
+            System.out.println("Unexpected error: File should exist but cannot be read.");
         }
     }
 
