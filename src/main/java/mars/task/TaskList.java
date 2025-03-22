@@ -39,24 +39,26 @@ public class TaskList {
                 space in between second box so that line.substring() can be standardised to index 7 */
                 desc = line.substring(7);
                 this.add(new Todo(desc, isDone));
-            } else if (line.charAt(1) == 'D') {
-                String remaining_line = line.substring(7);
-                String[] split_line = remaining_line.split(" \\(by: ");
-                String name = split_line[0];
-                String endDate = split_line[1].split("\\)")[0];
-                String formattedEndDate = LocalDateTime.parse(endDate, MONTH_DAY_YEAR).format(YEAR_MONTH_DAY);
-                desc= name + " by " + formattedEndDate;
-                this.add(new Deadline(desc, isDone));
             }
             else if (line.charAt(1) == 'D' &&  line.charAt(2) == 'W') {
                 String remaining_line = line.substring(8);
                 String[] split_line = remaining_line.split(" between: ");
                 String name = split_line[0];
-                String[] dates = split_line[1].split(" and: ");
+                String[] dates = split_line[1].split(" and ");
                 String formattedStartDate = LocalDateTime.parse(dates[0], MONTH_DAY_YEAR).format(YEAR_MONTH_DAY);
                 String formattedEndDate = LocalDateTime.parse(dates[1], MONTH_DAY_YEAR).format(YEAR_MONTH_DAY);
                 desc = name + " between: " + formattedStartDate + " and " + formattedEndDate;
                 this.add(new DoWithin(desc, isDone));
+            }
+            else if (line.charAt(1) == 'D') {
+                String remaining_line = line.substring(7);
+                String[] split_line = remaining_line.split("\\(by: ");
+                String name = split_line[0];
+                System.out.println(name);
+                String endDate = split_line[1].split("\\)")[0];
+                String formattedEndDate = LocalDateTime.parse(endDate, MONTH_DAY_YEAR).format(YEAR_MONTH_DAY);
+                desc= name + " by " + formattedEndDate;
+                this.add(new Deadline(desc, isDone));
             }
             else {
                 String remaining_line = line.substring(7);
